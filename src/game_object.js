@@ -7,6 +7,11 @@ class GameObject
 		this.x = x;
 		this.y = y;
 		this.group = group;
-		this.name;
+		this.name = "";
+		this.color = "#333";
+	}
+	
+	draw()
+	{
 	}
 }

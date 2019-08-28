@@ -26,8 +26,8 @@ let _levels = [
 			[ 120, 10 ]
 		],
 		"objects": [
-			[ OBJ_START_POINT, 8, 2 ], // [ type, x, y, (optional parameters) ]
-			[ OBJ_START_POINT, 8, 5 ]
+			[ OBJ_STARTPOINT, 8, 2 ], // [ type, x, y, (optional parameters) ]
+			[ OBJ_STARTPOINT, 8, 5 ]
 		]
 	}
 ];
