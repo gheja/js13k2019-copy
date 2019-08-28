@@ -4,7 +4,7 @@ class GameObjectWall extends GameObject
 {
 	constructor(x, y)
 	{
-		super(x, y, -1);
+		super(x, y, 1, 1, -1);
 		
 		this.color = "#666";
 	}

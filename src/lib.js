@@ -1,5 +1,7 @@
 "use strict";
 
+var _raf = window.requestAnimationFrame;
+
 function _copy(obj)
 {
 	return JSON.parse(JSON.stringify(obj));

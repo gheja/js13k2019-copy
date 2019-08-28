@@ -39,9 +39,42 @@ class Game
 				this.objects.push(new GameObjectStartpoint(a[1], a[2], room));
 			}
 		}
+		
+		this.objects.push(new GameObjectPlayer(6, 5, 1));
+	}
+	
+	tick()
+	{
+		let a;
+		
+		for (a of this.objects)
+		{
+			a.tick();
+		}
+	}
+	
+	renderFrame()
+	{
+		let a;
+		
+		_gfx.clear();
+		
+		for (a of this.objects)
+		{
+			a.draw();
+		}
+	}
+	
+	frame()
+	{
+		this.tick();
+		this.renderFrame();
+		
+		_raf(this.frame.bind(this));
 	}
 	
 	init()
 	{
+		_raf(this.frame.bind(this));
 	}
 }
