@@ -1,9 +1,9 @@
 Object types
-- [ ] wall
-- [ ] door
-- [ ] switch
-  - [ ] momentary
-  - [ ] on/off
+- [ ] wall <<<
+- [ ] door <<<
+- [ ] switch <<<
+  - [ ] momentary <<<
+  - [ ] on/off <<<
 - [ ] laser
 - [ ] ladder
 - [ ] static platform
@@ -15,15 +15,15 @@ Object types
 - [ ] spear in wall?
 
 Features
-- [ ] collision between player and object
+- [ ] collision between player and object <<<
 - [ ] collision between object and object
 - [ ] stick to object
 - [ ] player pushing object
 - [ ] player pushed by object
 - [ ] death
-- [ ] gravity
-- [ ] switch emitter
-- [ ] switch receiver
+- [ ] gravity <<<
+- [ ] switch emitter <<<
+- [ ] switch receiver <<<
 
 Abilities
 - [ ] jump
@@ -36,11 +36,18 @@ Abilities
 - [ ] glide
 
 Misc
-- [ ] input handler
-- [ ] input sequence record/replay
+- [ ] input handler <<<
+- [ ] input sequence record/replay <<<
 - [ ] gamepad support
 
+Editor
+- [ ] basics <<<
+...
+
 Menu
+...
+
+Graphics
 ...
 
 Tutorial
