@@ -1,10 +1,10 @@
 "use strict";
 
-class GameObjectDoor extends GameObject
+class GameObjectSwitch extends GameObject
 {
-	constructor(x, y, name)
+	constructor(x, y, group)
 	{
-		super(x, y, name);
+		super(x, y, group);
 		
 		this.steppedOn = false;
 	}

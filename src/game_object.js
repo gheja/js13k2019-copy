@@ -2,10 +2,11 @@
 
 class GameObject
 {
-	constructor(x, y, name)
+	constructor(x, y, group)
 	{
 		this.x = x;
 		this.y = y;
-		this.name = name;
+		this.group = group;
+		this.name;
 	}
 }
