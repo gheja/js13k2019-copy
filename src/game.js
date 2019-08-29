@@ -51,6 +51,8 @@ class Game
 		{
 			a.tick();
 		}
+		
+		_input.acknowledge();
 	}
 	
 	renderFrame()
