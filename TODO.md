@@ -1,5 +1,5 @@
 Object types
-- [ ] wall <<<
+- [x] wall <<<
 - [ ] door <<<
 - [ ] switch <<<
   - [ ] momentary <<<
@@ -15,7 +15,7 @@ Object types
 - [ ] spear in wall?
 
 Features
-- [ ] collision between player and object <<<
+- [x] collision between player and object <<<
 - [ ] collision between object and object
 - [ ] stick to object
 - [ ] player pushing object
@@ -36,7 +36,7 @@ Abilities
 - [ ] glide
 
 Misc
-- [ ] input handler <<<
+- [x] input handler <<<
 - [ ] input sequence record/replay <<<
 - [ ] gamepad support
 
