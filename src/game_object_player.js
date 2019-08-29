@@ -7,5 +7,6 @@ class GameObjectPlayer extends GameObject
 		super(x, y, 0.5, 0.5, room);
 		
 		this.color = "#0e4";
+		this.gravity = true;
 	}
 }

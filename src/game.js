@@ -73,8 +73,15 @@ class Game
 		_raf(this.frame.bind(this));
 	}
 	
+	jump()
+	{
+		this.objects[40].speedY = -4;
+		this.objects[40].speedX = Math.random() * 3 - 1.5;
+	}
+	
 	init()
 	{
 		_raf(this.frame.bind(this));
+		window.setInterval(this.jump.bind(this), 2000);
 	}
 }
