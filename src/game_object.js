@@ -90,6 +90,9 @@ class GameObject
 		while (a > 0 || c > 0)
 		{
 			// update collisions
+			
+			// TODO: currently only checks four points on the edges
+			// which leads to intersect when colliding on corners
 			this.collidedObjects = [
 				this.getCollidedObject(0, -1), // top
 				this.getCollidedObject(1, 0), // right
