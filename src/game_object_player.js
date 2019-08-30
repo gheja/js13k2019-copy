@@ -4,7 +4,7 @@ class GameObjectPlayer extends GameObject
 {
 	constructor(x, y, room)
 	{
-		super(x, y, 0.5, 0.5, room);
+		super(x, y, 0.4, 0.8, room);
 		
 		this.color = "#0e4";
 		this.gravity = true;

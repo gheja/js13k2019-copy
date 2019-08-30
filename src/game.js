@@ -40,7 +40,7 @@ class Game
 			}
 		}
 		
-		this.objects.push(new GameObjectPlayer(6, 5, 1));
+		this.objects.push(new GameObjectPlayer(6, 8, 1));
 	}
 	
 	tick()

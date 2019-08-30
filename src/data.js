@@ -3,20 +3,25 @@
 let _levels = [
 	{
 		"width": 10, // tiles
-		"height": 7, // tiles == walls.length / width (TODO: remove?)
+		"height": 10, // tiles == walls.length / width (TODO: remove?)
 		"walls":
 "1111111111\
+1111100001\
 1000000001\
-1000000001\
+1000011111\
 1111111111\
 1000000001\
 1000000001\
+1011000001\
+1011110001\
 1111111111",
 		"roomMap":
 "0000000000\
 0000000000\
 0000000000\
 0000000000\
+0000000000\
+1111111111\
 1111111111\
 1111111111\
 1111111111\
@@ -27,7 +32,7 @@ let _levels = [
 		],
 		"objects": [
 			[ OBJ_STARTPOINT, 8, 2 ], // [ type, x, y, (optional parameters) ]
-			[ OBJ_STARTPOINT, 8, 5 ]
+			[ OBJ_STARTPOINT, 8, 8 ]
 		]
 	}
 ];
