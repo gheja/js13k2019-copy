@@ -13,9 +13,6 @@ class Gfx
 	
 	clear()
 	{
-/*
-		this.ctx.fillStyle = "rgba(0,0,0,0.5)";
-*/
 		this.ctx.fillStyle = "#222";
 		this.ctx.fillRect(0, 0, 600, 600);
 	}

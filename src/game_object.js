@@ -129,10 +129,6 @@ class GameObject
 				c--;
 			}
 		}
-/*
-		this.x = this.x + ;
-		this.y = this.y + Math.round(this.speedY);
-*/
 	}
 	
 	defaultTick()
@@ -143,10 +139,6 @@ class GameObject
 		}
 		
 		this.moveAndCheckCollisions();
-/*
-		this.x = this.x + Math.round(this.speedX);
-		this.y = this.y + Math.round(this.speedY);
-*/
 	}
 	
 	tick()
