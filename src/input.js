@@ -17,6 +17,8 @@ class Input
 			{ "state": false, "changed": false, "events": [ "2" ] }
 		];
 		
+		// TODO: check event.type (== "keydown" or "keyup") instead?
+		// IE might not support that https://developer.mozilla.org/en-US/docs/Web/API/Event/type
 		bindEvent(window, "keydown", this.handleKeyDown.bind(this));
 		bindEvent(window, "keyup", this.handleKeyUp.bind(this));
 	}
@@ -39,7 +41,7 @@ class Input
 		
 		for (a of this.controls)
 		{
-			if (a.events.indexOf(eventName) != -1)
+			if (a.events.indexOf(eventName.toLowerCase()) != -1)
 			{
 				a.changed = a.state != state;
 				
@@ -55,7 +57,7 @@ class Input
 	
 	handleKeyDown(event)
 	{
-		if (this.handleEvent(event.key.toLowerCase(), true))
+		if (this.handleEvent(event.key, true))
 		{
 			event.preventDefault();
 		}
@@ -63,7 +65,7 @@ class Input
 	
 	handleKeyUp(event)
 	{
-		if (this.handleEvent(event.key.toLowerCase(), false))
+		if (this.handleEvent(event.key, false))
 		{
 			event.preventDefault();
 		}
