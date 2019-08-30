@@ -19,6 +19,8 @@ class GameObject
 		this.collisionTarget = false;
 		this.speedX = 0;
 		this.speedY = 0;
+		
+		this.collidedObjects = [ null, null, null, null ]; // top, right, bottom, left
 	}
 	
 	draw()
@@ -87,9 +89,17 @@ class GameObject
 		
 		while (a > 0 || c > 0)
 		{
+			// update collisions
+			this.collidedObjects = [
+				this.getCollidedObject(0, -1), // top
+				this.getCollidedObject(1, 0), // right
+				this.getCollidedObject(0, 1), // bottom
+				this.getCollidedObject(-1, 0) // left
+			];
+			
 			if (a > 0)
 			{
-				if (!this.getCollidedObject(b, 0))
+				if ((b < 0 && !this.collidedObjects[DIRECTION_LEFT]) || (b > 0 && !this.collidedObjects[DIRECTION_RIGHT]))
 				{
 					this.x += b;
 				}
@@ -105,7 +115,7 @@ class GameObject
 			
 			if (c > 0)
 			{
-				if (!this.getCollidedObject(0, d))
+				if ((d < 0 && !this.collidedObjects[DIRECTION_UP]) || (d > 0 && !this.collidedObjects[DIRECTION_DOWN]))
 				{
 					this.y += d;
 				}
@@ -131,6 +141,7 @@ class GameObject
 		{
 			this.speedY += 10 / 60;
 		}
+		
 		this.moveAndCheckCollisions();
 /*
 		this.x = this.x + Math.round(this.speedX);
