@@ -8,26 +8,46 @@ class GameObjectPlayer extends GameObject
 		
 		this.color = "#0e4";
 		this.gravity = true;
+		this.doubleJumped = false;
 	}
 	
 	tick()
 	{
-		if (_input.controls["up"].state && _input.controls["up"].changed)
+		// contact on feet
+		if (this.collidedObjects[2])
 		{
-			this.speedY = -4;
+			if (_input.controls["up"].state && _input.controls["up"].changed)
+			{
+				this.speedY = -4;
+			}
+			
+			if (_input.controls["left"].state)
+			{
+				this.speedX += -4/10;
+			}
+			
+			if (_input.controls["right"].state)
+			{
+				this.speedX += 4/10;
+			}
+			
+			// drag
+			this.speedX *= 0.9;
+			
+			// reset double jump
+			this.doubleJumped = false;
+		}
+		else
+		{
+			if (_input.controls["up"].state && _input.controls["up"].changed && !this.doubleJumped)
+			{
+				this.speedY = -4;
+				this.doubleJumped = true;
+			}
 		}
 		
-		if (_input.controls["left"].state)
-		{
-			this.speedX += -4/10;
-		}
-		
-		if (_input.controls["right"].state)
-		{
-			this.speedX += 4/10;
-		}
-		
-		this.speedX *= 0.9;
+		// air drag
+		this.speedX *= 0.99;
 		
 		this.defaultTick();
 	}
