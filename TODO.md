@@ -21,7 +21,7 @@ Features
 - [ ] player pushing object
 - [ ] player pushed by object
 - [ ] death
-- [ ] gravity <<<
+- [x] gravity <<<
 - [ ] switch emitter <<<
 - [ ] switch receiver <<<
 
