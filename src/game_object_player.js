@@ -13,7 +13,7 @@ class GameObjectPlayer extends GameObject
 	
 	tick()
 	{
-		if (_input.controls[CONTROL_UP].state && _input.controls[CONTROL_UP].changed)
+		if (_inputControls[CONTROL_UP][INPUT_KEY_STATE] && _inputControls[CONTROL_UP][INPUT_KEY_CHANGED])
 		{
 			// has ground contact - normal jump
 			if (this.collidedObjects[DIRECTION_DOWN])
@@ -48,12 +48,12 @@ class GameObjectPlayer extends GameObject
 		// has ground contact
 		if (this.collidedObjects[DIRECTION_DOWN])
 		{
-			if (_input.controls[CONTROL_LEFT].state)
+			if (_inputControls[CONTROL_LEFT][INPUT_KEY_STATE])
 			{
 				this.speedX += -4/10;
 			}
 			
-			if (_input.controls[CONTROL_RIGHT].state)
+			if (_inputControls[CONTROL_RIGHT][INPUT_KEY_STATE])
 			{
 				this.speedX += 4/10;
 			}

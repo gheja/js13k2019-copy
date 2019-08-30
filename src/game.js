@@ -52,7 +52,7 @@ class Game
 			a.tick();
 		}
 		
-		_input.acknowledge();
+		inputAcknowledge();
 	}
 	
 	renderFrame()
