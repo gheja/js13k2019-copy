@@ -10,3 +10,10 @@ const DIRECTION_UP = 0;
 const DIRECTION_RIGHT = 1;
 const DIRECTION_DOWN = 2;
 const DIRECTION_LEFT = 3;
+
+const CONTROL_UP = 0;
+const CONTROL_RIGHT = 1;
+const CONTROL_DOWN = 2;
+const CONTROL_LEFT = 3;
+const CONTROL_ACTION_1 = 4;
+const CONTROL_ACTION_2 = 5;
