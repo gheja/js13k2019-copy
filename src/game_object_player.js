@@ -6,7 +6,10 @@ class GameObjectPlayer extends GameObject
 	{
 		super(x, y, 0.4, 0.8, room);
 		
-		this.color = "#0e4";
+		if (DEBUG)
+		{
+			this.color = "#0e4";
+		}
 		this.gravity = true;
 		this.doubleJumped = false;
 	}

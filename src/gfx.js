@@ -19,6 +19,11 @@ class Gfx
 	
 	drawDebugRectangle(x, y, width, height, color)
 	{
+		if (!DEBUG)
+		{
+			return;
+		}
+		
 		this.ctx.fillStyle = color;
 		this.ctx.fillRect((x - width / 2) * DEBUG_DRAW_SCALE, (y - height / 2) * DEBUG_DRAW_SCALE, width * DEBUG_DRAW_SCALE, height * DEBUG_DRAW_SCALE);
 	}

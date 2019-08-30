@@ -13,7 +13,10 @@ class GameObject
 		this.height = Math.round(height * GAME_OBJECT_COORDINATE_SCALE);
 		this.room = room;
 		this.name = "";
-		this.color = "#333";
+		if (DEBUG)
+		{
+			this.color = "#333";
+		}
 		this.gravity = false;
 		this.collisionActor = false;
 		this.collisionTarget = false;
@@ -25,7 +28,10 @@ class GameObject
 	
 	draw()
 	{
-		_gfx.drawDebugRectangle(this.x, this.y, this.width, this.height, this.color);
+		if (DEBUG)
+		{
+			_gfx.drawDebugRectangle(this.x, this.y, this.width, this.height, this.color);
+		}
 	}
 	
 	getCollidedObject(dx, dy)

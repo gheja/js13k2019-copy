@@ -22,3 +22,5 @@ const INPUT_KEY_STATE = 0;
 const INPUT_KEY_CHANGED = 1;
 const INPUT_KEY_EVENTS = 2;
 
+const DEBUG = 1;
+

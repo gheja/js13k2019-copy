@@ -6,7 +6,11 @@ class GameObjectWall extends GameObject
 	{
 		super(x, y, 1, 1, -1);
 		
-		this.color = "#666";
+		if (DEBUG)
+		{
+			this.color = "#666";
+		}
+		
 		this.collisionTarget = true;
 	}
 }

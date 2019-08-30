@@ -59,7 +59,10 @@ class Game
 	{
 		let a;
 		
-		_gfx.clear();
+		if (DEBUG)
+		{
+			_gfx.clear();
+		}
 		
 		for (a of this.objects)
 		{

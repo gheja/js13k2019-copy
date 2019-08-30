@@ -44,7 +44,10 @@ function inputHandleEvent(eventName, state)
 		}
 	}
 	
-	console.log("unknown event: \"" + eventName + "\"");
+	if (DEBUG)
+	{
+		console.log("unknown event: \"" + eventName + "\"");
+	}
 	
 	return false;
 }

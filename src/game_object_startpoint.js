@@ -6,6 +6,9 @@ class GameObjectStartpoint extends GameObject
 	{
 		super(x, y, 1, 1, room);
 		
-		this.color = "#363";
+		if (DEBUG)
+		{
+			this.color = "#363";
+		}
 	}
 }
