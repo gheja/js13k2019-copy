@@ -39,6 +39,7 @@ class GameObjectPlayer extends GameObject
 					if (!this.doubleJumped)
 					{
 						this.speedY = -4;
+						this.doubleJumped = true;
 					}
 				}
 			}
