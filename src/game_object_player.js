@@ -13,14 +13,40 @@ class GameObjectPlayer extends GameObject
 	
 	tick()
 	{
-		// contact on feet
-		if (this.collidedObjects[2])
+		if (_input.controls["up"].state && _input.controls["up"].changed)
 		{
-			if (_input.controls["up"].state && _input.controls["up"].changed)
+			// has ground contact - normal jump
+			if (this.collidedObjects[DIRECTION_DOWN])
 			{
 				this.speedY = -4;
 			}
-			
+			else
+			{
+				// has wall contact - wall jump
+				if (this.collidedObjects[DIRECTION_LEFT])
+				{
+					this.speedY = -4;
+					this.speedX = 4;
+				}
+				else if (this.collidedObjects[DIRECTION_RIGHT])
+				{
+					this.speedY = -4;
+					this.speedX = -4;
+				}
+				else
+				{
+					// double jump
+					if (!this.doubleJumped)
+					{
+						this.speedY = -4;
+					}
+				}
+			}
+		}
+		
+		// has ground contact
+		if (this.collidedObjects[DIRECTION_DOWN])
+		{
 			if (_input.controls["left"].state)
 			{
 				this.speedX += -4/10;
@@ -36,14 +62,6 @@ class GameObjectPlayer extends GameObject
 			
 			// reset double jump
 			this.doubleJumped = false;
-		}
-		else
-		{
-			if (_input.controls["up"].state && _input.controls["up"].changed && !this.doubleJumped)
-			{
-				this.speedY = -4;
-				this.doubleJumped = true;
-			}
 		}
 		
 		// air drag
