@@ -1,11 +1,9 @@
 body,
 html
 {
-	padding: 0;
-	margin: 0;
 	background: #222;
-	overflow: hidden;
 	overscroll-behavior: none;
+	font-family: "Trebuchet MS";
 }
 
 canvas
