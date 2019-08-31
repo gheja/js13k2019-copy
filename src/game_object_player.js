@@ -12,7 +12,7 @@ class GameObjectPlayer extends GameObject
 		}
 		this.gravity = true;
 		this.doubleJumped = false;
-		this.recording = true;
+		this.recording = false;
 		
 		this.recordedControls = [];
 	}
@@ -98,13 +98,10 @@ class GameObjectPlayer extends GameObject
 		this.defaultTick();
 	}
 	
-	restart()
+	reset()
 	{
-		this.ticks = 0;
+		this.doubleJumped = false;
 		this.recording = false;
-		this.speedX = 0;
-		this.speedY = 0;
-		this.x = Math.round(6 * GAME_OBJECT_COORDINATE_SCALE);;
-		this.y = Math.round(8 * GAME_OBJECT_COORDINATE_SCALE);;
+		this.defaultReset();
 	}
 }

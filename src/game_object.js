@@ -7,8 +7,10 @@ class GameObject
 	constructor(x, y, width, height, room)
 	{
 		// initial position is multiplied
-		this.x = Math.round(x * GAME_OBJECT_COORDINATE_SCALE);
-		this.y = Math.round(y * GAME_OBJECT_COORDINATE_SCALE);
+		this.startingX = Math.round(x * GAME_OBJECT_COORDINATE_SCALE);
+		this.startingY = Math.round(y * GAME_OBJECT_COORDINATE_SCALE);
+		this.x = 0;
+		this.y = 0;
 		this.width = Math.round(width * GAME_OBJECT_COORDINATE_SCALE);
 		this.height = Math.round(height * GAME_OBJECT_COORDINATE_SCALE);
 		this.room = room;
@@ -156,5 +158,19 @@ class GameObject
 	tick()
 	{
 		this.defaultTick();
+	}
+	
+	defaultReset()
+	{
+		this.x = this.startingX;
+		this.y = this.startingY;
+		this.speedX = 0;
+		this.speedY = 0;
+		this.ticks = 0;
+	}
+	
+	reset()
+	{
+		this.defaultReset();
 	}
 }

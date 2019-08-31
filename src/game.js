@@ -41,6 +41,11 @@ class Game
 		}
 		
 		this.objects.push(new GameObjectPlayer(6, 8, 1));
+		
+		for (a of this.objects)
+		{
+			a.reset();
+		}
 	}
 	
 	tick()
