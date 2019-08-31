@@ -13,6 +13,7 @@ class GameObjectPlayer extends GameObject
 		this.gravity = true;
 		this.doubleJumped = false;
 		this.recording = false;
+		this.tickRound = 1;
 		
 		this.recordedControls = [];
 	}

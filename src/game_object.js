@@ -25,6 +25,7 @@ class GameObject
 		this.speedX = 0;
 		this.speedY = 0;
 		this.ticks = 0;
+		this.tickRound = 2;
 		
 		this.collidedObjects = [ null, null, null, null ]; // top, right, bottom, left
 	}

@@ -151,7 +151,7 @@ class Game
 	
 	tick()
 	{
-		let a;
+		let a, i;
 		
 		this.ticks++;
 		
@@ -163,9 +163,15 @@ class Game
 			}
 		}
 		
-		for (a of this.objects)
+		for (i=0; i<=3; i++)
 		{
-			a.tick();
+			for (a of this.objects)
+			{
+				if (a.tickRound == i)
+				{
+					a.tick();
+				}
+			}
 		}
 		
 		if (this.mode == GAME_MODE_ROOM_SELECT)
