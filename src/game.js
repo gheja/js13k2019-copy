@@ -16,6 +16,11 @@ class Game
 		this.ticks = 0;
 	}
 	
+	setHint(hintArrows, hintAction1, hintAction2)
+	{
+		document.getElementById("hint").innerHTML = "<b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2;
+	}
+	
 	loadLevel(data)
 	{
 		let x, y, a, room;
@@ -165,7 +170,16 @@ class Game
 		
 		if (this.mode == GAME_MODE_ROOM_SELECT)
 		{
+			this.setHint("Select room", "Play", "(none)");
 			this.handleRoomSelectInput();
+		}
+		else if (this.mode == GAME_MODE_ROOM_WAITING)
+		{
+			this.setHint("(none)", "(none)", "(none)");
+		}
+		else
+		{
+			this.setHint("Walk/jump", "(none)", "(none)");
 		}
 		
 		inputAcknowledge();

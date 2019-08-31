@@ -14,3 +14,17 @@ canvas
 	top: 0;
 	left: 0;
 }
+
+#hint
+{
+	position: fixed;
+	top: 530px;
+	left: 25px;
+	z-index: 1000;
+	color: #aaa;
+}
+
+#hint b
+{
+	color: #fff;
+}
