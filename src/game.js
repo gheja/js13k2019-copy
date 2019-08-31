@@ -137,7 +137,7 @@ class Game
 				{
 					if (a instanceof GameObjectPlayer)
 					{
-						a.recording = true;
+						a.startRecording();
 					}
 				}
 			}

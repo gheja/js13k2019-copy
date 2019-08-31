@@ -98,6 +98,12 @@ class GameObjectPlayer extends GameObject
 		this.defaultTick();
 	}
 	
+	startRecording()
+	{
+		this.recording = true;
+		this.recordedControls.length = 0;
+	}
+	
 	reset()
 	{
 		this.doubleJumped = false;
