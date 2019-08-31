@@ -48,6 +48,14 @@ class Game
 			{
 				this.objects.push(new GameObjectPlayer(a[1], a[2], room));
 			}
+			else if (a[0] == OBJ_DOOR)
+			{
+				this.objects.push(new GameObjectDoor(a[1], a[2], a[3], room));
+			}
+			else if (a[0] == OBJ_SWITCH)
+			{
+				this.objects.push(new GameObjectSwitch(a[1], a[2], a[3], room));
+			}
 		}
 		
 		
