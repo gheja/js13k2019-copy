@@ -95,7 +95,7 @@ class Game
 				{
 					if (this.mode == GAME_MODE_ROOM_PLAYING)
 					{
-						color = "0,255,128";
+						color = "0,255,0";
 					}
 					else
 					{
@@ -109,7 +109,7 @@ class Game
 				
 				if (color)
 				{
-					_gfx.drawDebugRectangle(x * GAME_OBJECT_COORDINATE_SCALE, y * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, "rgba(" + color + ",0.1)");
+					_gfx.drawDebugRectangle(x * GAME_OBJECT_COORDINATE_SCALE, y * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, "rgba(" + color + ",0.15)");
 				}
 			}
 		}
