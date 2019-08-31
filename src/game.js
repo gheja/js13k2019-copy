@@ -150,6 +150,14 @@ class Game
 		
 		this.ticks++;
 		
+		for (a in this.level.times)
+		{
+			if (this.ticks % this.level.times[a][0] == this.level.times[a][1])
+			{
+				this.resetRoom(a);
+			}
+		}
+		
 		for (a of this.objects)
 		{
 			a.tick();
@@ -161,14 +169,6 @@ class Game
 		}
 		
 		inputAcknowledge();
-		
-		for (a in this.level.times)
-		{
-			if (this.ticks % this.level.times[a][0] == this.level.times[a][1])
-			{
-				this.resetRoom(a);
-			}
-		}
 	}
 	
 	renderFrame()
