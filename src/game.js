@@ -200,6 +200,12 @@ class Game
 		}
 		
 		this.drawRoomHighlights();
+		
+		a = (this.ticks % this.level.times[0][0]) / this.level.times[0][0];
+		_gfx.drawDebugProgressBar(390, 80, 80, 5, a, "#ccc");
+		
+		a = (this.ticks % this.level.times[1][0]) / this.level.times[1][0];
+		_gfx.drawDebugProgressBar(390, 280, 80, 5, a, "#ccc");
 	}
 	
 	frame()
