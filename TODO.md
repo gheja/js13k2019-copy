@@ -37,7 +37,7 @@ Abilities
 
 Misc
 - [x] input handler <<<
-- [ ] input sequence record/replay <<<
+- [x] input sequence record/replay <<<
 - [ ] gamepad support
 
 Editor
