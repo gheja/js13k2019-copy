@@ -86,6 +86,19 @@ class GameObject
 		return null;
 	}
 	
+	updateCollisions()
+	{
+		// TODO: currently only checks four points on the edges
+		// which leads to intersect when colliding on corners
+		
+		this.collidedObjects = [
+			this.getCollidedObject(0, -1), // top
+			this.getCollidedObject(1, 0), // right
+			this.getCollidedObject(0, 1), // bottom
+			this.getCollidedObject(-1, 0) // left
+		];
+	}
+	
 	moveAndCheckCollisions()
 	{
 		let a, b, c, d;
@@ -98,16 +111,7 @@ class GameObject
 		
 		while (a > 0 || c > 0)
 		{
-			// update collisions
-			
-			// TODO: currently only checks four points on the edges
-			// which leads to intersect when colliding on corners
-			this.collidedObjects = [
-				this.getCollidedObject(0, -1), // top
-				this.getCollidedObject(1, 0), // right
-				this.getCollidedObject(0, 1), // bottom
-				this.getCollidedObject(-1, 0) // left
-			];
+			this.updateCollisions();
 			
 			if (a > 0)
 			{
