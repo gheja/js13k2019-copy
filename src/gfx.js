@@ -25,6 +25,18 @@ class Gfx
 		}
 		
 		this.ctx.fillStyle = color;
-		this.ctx.fillRect((x - width / 2) * DEBUG_DRAW_SCALE, (y - height / 2) * DEBUG_DRAW_SCALE, width * DEBUG_DRAW_SCALE, height * DEBUG_DRAW_SCALE);
+		this.ctx.fillRect((x - width / 2 + 50) * DEBUG_DRAW_SCALE, (y - height / 2 + 50) * DEBUG_DRAW_SCALE, width * DEBUG_DRAW_SCALE, height * DEBUG_DRAW_SCALE);
+	}
+	
+	drawDebugProgressBar(x, y, width, height, position, color)
+	{
+		if (!DEBUG)
+		{
+			return;
+		}
+		
+		this.ctx.fillStyle = color;
+		this.ctx.fillRect(x * DEBUG_DRAW_SCALE, y * DEBUG_DRAW_SCALE, (width * position) * DEBUG_DRAW_SCALE, height * DEBUG_DRAW_SCALE);
+		this.ctx.fillRect(x * DEBUG_DRAW_SCALE, (y + height - 1) * DEBUG_DRAW_SCALE, width * DEBUG_DRAW_SCALE, 1 * DEBUG_DRAW_SCALE);
 	}
 }
