@@ -73,19 +73,38 @@ class Game
 	
 	drawRoomHighlights()
 	{
-		let x, y, a, room;
+		let x, y, a, room, color;
 		
 		for (y=0; y<this.level.height; y++)
 		{
 			for (x=0; x<this.level.width; x++)
 			{
+				if (this.level.walls[y * this.level.width + x] != 0)
+				{
+					continue;
+				}
+				
+				color = null;
+				
 				if (this.level.roomMap[y * this.level.width + x] == this.activeRoomIndex)
 				{
-					_gfx.drawDebugRectangle(x * GAME_OBJECT_COORDINATE_SCALE, y * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, "rgba(255,255,0,0.2)");
+					if (this.mode == GAME_MODE_ROOM_PLAYING)
+					{
+						color = "0,255,128";
+					}
+					else
+					{
+						color = "255,255,0";
+					}
 				}
 				else if (this.level.roomMap[y * this.level.width + x] == this.highlightedRoomIndex)
 				{
-					_gfx.drawDebugRectangle(x * GAME_OBJECT_COORDINATE_SCALE, y * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, "rgba(255,255,255,0.1)");
+					color = "255,255,255";
+				}
+				
+				if (color)
+				{
+					_gfx.drawDebugRectangle(x * GAME_OBJECT_COORDINATE_SCALE, y * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, "rgba(" + color + ",0.1)");
 				}
 			}
 		}
