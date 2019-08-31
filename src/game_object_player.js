@@ -12,11 +12,14 @@ class GameObjectPlayer extends GameObject
 		}
 		this.gravity = true;
 		this.doubleJumped = false;
+		this.recording = true;
+		
+		this.recordedControls = [];
 	}
 	
-	tick()
+	handleControls(c)
 	{
-		if (_inputControls[CONTROL_UP][INPUT_KEY_STATE] && _inputControls[CONTROL_UP][INPUT_KEY_CHANGED])
+		if (c[CONTROL_UP][INPUT_KEY_STATE] && c[CONTROL_UP][INPUT_KEY_CHANGED])
 		{
 			// has ground contact - normal jump
 			if (this.collidedObjects[DIRECTION_DOWN])
@@ -51,16 +54,37 @@ class GameObjectPlayer extends GameObject
 		// has ground contact
 		if (this.collidedObjects[DIRECTION_DOWN])
 		{
-			if (_inputControls[CONTROL_LEFT][INPUT_KEY_STATE])
+			if (c[CONTROL_LEFT][INPUT_KEY_STATE])
 			{
 				this.speedX += -4/10;
 			}
 			
-			if (_inputControls[CONTROL_RIGHT][INPUT_KEY_STATE])
+			if (c[CONTROL_RIGHT][INPUT_KEY_STATE])
 			{
 				this.speedX += 4/10;
 			}
-			
+		}
+	}
+	
+	tick()
+	{
+		let c;
+		
+		if (this.recording)
+		{
+			this.recordedControls[this.ticks] = _copy(_inputControls);
+		}
+		
+		c = this.recordedControls[this.ticks];
+		
+		if (c)
+		{
+			this.handleControls(c);
+		}
+		
+		// has ground contact
+		if (this.collidedObjects[DIRECTION_DOWN])
+		{
 			// drag
 			this.speedX *= 0.9;
 			
@@ -72,5 +96,15 @@ class GameObjectPlayer extends GameObject
 		this.speedX *= 0.99;
 		
 		this.defaultTick();
+	}
+	
+	restart()
+	{
+		this.ticks = 0;
+		this.recording = false;
+		this.speedX = 0;
+		this.speedY = 0;
+		this.x = Math.round(6 * GAME_OBJECT_COORDINATE_SCALE);;
+		this.y = Math.round(8 * GAME_OBJECT_COORDINATE_SCALE);;
 	}
 }

@@ -22,6 +22,7 @@ class GameObject
 		this.collisionTarget = false;
 		this.speedX = 0;
 		this.speedY = 0;
+		this.ticks = 0;
 		
 		this.collidedObjects = [ null, null, null, null ]; // top, right, bottom, left
 	}
@@ -142,6 +143,8 @@ class GameObject
 	
 	defaultTick()
 	{
+		this.ticks++;
+		
 		if (this.gravity)
 		{
 			this.speedY += 10 / 60;
