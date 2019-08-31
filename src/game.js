@@ -41,11 +41,10 @@ class Game
 			
 			if (a[0] == OBJ_STARTPOINT)
 			{
-				this.objects.push(new GameObjectStartpoint(a[1], a[2], room));
+				this.objects.push(new GameObjectPlayer(a[1], a[2], room));
 			}
 		}
 		
-		this.objects.push(new GameObjectPlayer(6, 8, 1));
 		
 		for (a of this.objects)
 		{
