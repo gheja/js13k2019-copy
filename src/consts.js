@@ -1,5 +1,7 @@
 "use strict";
 
+const DEBUG = 1;
+
 const OBJ_WALL = 1;
 const OBJ_STARTPOINT = 2;
 
@@ -22,5 +24,6 @@ const INPUT_KEY_STATE = 0;
 const INPUT_KEY_CHANGED = 1;
 const INPUT_KEY_EVENTS = 2;
 
-const DEBUG = 1;
-
+const GAME_MODE_ROOM_SELECT = 0;
+const GAME_MODE_ROOM_WAITING = 1;
+const GAME_MODE_ROOM_PLAYING = 2;
