@@ -23,7 +23,13 @@ class Game
 	
 	loadLevel(data)
 	{
-		let x, y, a, room;
+		let x, y, a, b, classes, room;
+		
+		classes = [
+			GameObjectPlayer, // OBJ_STARTPOINT == 0
+			GameObjectDoor, // OBJ_DOOR == 1
+			GameObjectSwitch // OBJ_SWITCH == 2
+		];
 		
 		this.level = data;
 		this.objects = [];
@@ -47,18 +53,7 @@ class Game
 			b = a.slice(1);
 			b.push(room);
 			
-			if (a[0] == OBJ_STARTPOINT)
-			{
-				this.objects.push(new GameObjectPlayer(...b));
-			}
-			else if (a[0] == OBJ_DOOR)
-			{
-				this.objects.push(new GameObjectDoor(...b));
-			}
-			else if (a[0] == OBJ_SWITCH)
-			{
-				this.objects.push(new GameObjectSwitch(...b));
-			}
+			this.objects.push(new classes[a[0]](...b));
 		}
 		
 		
