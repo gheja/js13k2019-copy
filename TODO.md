@@ -1,8 +1,8 @@
 Object types
 - [x] wall <<<
-- [ ] door <<<
-- [ ] switch <<<
-  - [ ] momentary <<<
+- [x] door <<<
+- [x] switch <<<
+  - [x] momentary <<<
   - [ ] on/off <<<
 - [ ] laser
 - [ ] ladder
@@ -22,8 +22,8 @@ Features
 - [ ] player pushed by object
 - [ ] death
 - [x] gravity <<<
-- [ ] switch emitter <<<
-- [ ] switch receiver <<<
+- [x] switch emitter <<<
+- [x] switch receiver <<<
 
 Abilities
 - [ ] jump
