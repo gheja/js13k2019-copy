@@ -44,17 +44,20 @@ class Game
 			// look up room by coordinates
 			room = this.level.roomMap[ a[2] * this.level.width + a[1] ];
 			
+			b = a.slice(1);
+			b.push(room);
+			
 			if (a[0] == OBJ_STARTPOINT)
 			{
-				this.objects.push(new GameObjectPlayer(a[1], a[2], room));
+				this.objects.push(new GameObjectPlayer(...b));
 			}
 			else if (a[0] == OBJ_DOOR)
 			{
-				this.objects.push(new GameObjectDoor(a[1], a[2], a[3], room));
+				this.objects.push(new GameObjectDoor(...b));
 			}
 			else if (a[0] == OBJ_SWITCH)
 			{
-				this.objects.push(new GameObjectSwitch(a[1], a[2], a[3], a[4], a[5], room));
+				this.objects.push(new GameObjectSwitch(...b));
 			}
 		}
 		
