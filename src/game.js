@@ -16,9 +16,9 @@ class Game
 		this.ticks = 0;
 	}
 	
-	setHint(hintArrows, hintAction1, hintAction2)
+	setHint(status, hintArrows, hintAction1, hintAction2)
 	{
-		document.getElementById("hint").innerHTML = "<b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2;
+		document.getElementById("hint").innerHTML = status + "<br/><b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2;
 	}
 	
 	loadLevel(data)
@@ -197,17 +197,17 @@ class Game
 		
 		if (this.mode == GAME_MODE_ROOM_SELECT)
 		{
-			this.setHint("Toggle rooms", "Play", "(none)");
+			this.setHint("Select a room to play", "Toggle rooms", "Play", "(none)");
 			this.handleRoomSelectInput();
 		}
 		else if (this.mode == GAME_MODE_ROOM_WAITING)
 		{
-			this.setHint("(none)", "(none)", "Cancel");
+			this.setHint("Wait...", "(none)", "(none)", "Cancel");
 			this.handleRoomWaitingInput();
 		}
 		else
 		{
-			this.setHint("Walk/jump", "(none)", "Finished");
+			this.setHint("Play this room", "Walk/jump", "(none)", "Finished");
 		}
 		
 		inputAcknowledge();
