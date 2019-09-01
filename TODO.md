@@ -1,9 +1,9 @@
 Object types
-- [x] wall <<<
-- [x] door <<<
-- [x] switch <<<
-  - [x] momentary <<<
-  - [ ] on/off <<<
+- [x] wall P1
+- [x] door P1
+- [x] switch P1
+  - [x] momentary P1
+  - [ ] on/off P1
 - [ ] laser
 - [ ] ladder
 - [ ] static platform
@@ -15,15 +15,15 @@ Object types
 - [ ] spear in wall?
 
 Features
-- [x] collision between player and object <<<
+- [x] collision between player and object P1
 - [ ] collision between object and object
 - [ ] stick to object
 - [ ] player pushing object
 - [ ] player pushed by object
 - [ ] death
-- [x] gravity <<<
-- [x] switch emitter <<<
-- [x] switch receiver <<<
+- [x] gravity P1
+- [x] switch emitter P1
+- [x] switch receiver P1
 
 Abilities
 - [ ] jump
@@ -36,19 +36,24 @@ Abilities
 - [ ] glide
 
 Misc
-- [x] input handler <<<
-- [x] input sequence record/replay <<<
+- [x] input handler P1
+- [x] input sequence record/replay P1
 - [ ] gamepad support
 
 Editor
-- [ ] basics <<<
-...
+- [ ] wall layer P2
+- [ ] room layer P2
+- [ ] objects P2
 
 Menu
-...
+- [ ] main menu
+- [ ] calibration
 
 Graphics
-...
+- [ ] objects
+- [ ] main menu
+- [ ] calibration
+- [ ] transition menu to/from game
 
 Tutorial
 ...
@@ -58,3 +63,7 @@ Music
 
 SFX
 ...
+
+Misc
+- [ ] automatic build system P2-3
+- [ ] travis integration P3
