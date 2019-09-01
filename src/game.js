@@ -84,6 +84,14 @@ class Game
 		}
 	}
 	
+	handleRoomWaitingInput()
+	{
+		if ((_inputControls[CONTROL_ACTION_2][INPUT_KEY_STATE] && _inputControls[CONTROL_ACTION_2][INPUT_KEY_CHANGED]))
+		{
+			this.deactivateRoom();
+		}
+	}
+	
 	drawRoomHighlights()
 	{
 		let x, y, a, room, color;
@@ -189,16 +197,17 @@ class Game
 		
 		if (this.mode == GAME_MODE_ROOM_SELECT)
 		{
-			this.setHint("Select room", "Play", "(none)");
+			this.setHint("Toggle rooms", "Play", "(none)");
 			this.handleRoomSelectInput();
 		}
 		else if (this.mode == GAME_MODE_ROOM_WAITING)
 		{
-			this.setHint("(none)", "(none)", "(none)");
+			this.setHint("(none)", "(none)", "Cancel");
+			this.handleRoomWaitingInput();
 		}
 		else
 		{
-			this.setHint("Walk/jump", "(none)", "(none)");
+			this.setHint("Walk/jump", "(none)", "Finished");
 		}
 		
 		inputAcknowledge();
