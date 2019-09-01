@@ -31,14 +31,11 @@ function inputHandleEvent(eventName, state)
 {
 	let a;
 	
-	// TODO: clean up this
-	
 	for (a of _inputControls)
 	{
-		if (a[INPUT_KEY_EVENTS].indexOf(eventName.toLowerCase()) != -1)
+		if (a[INPUT_KEY_EVENTS].indexOf(eventName) != -1)
 		{
 			a[INPUT_KEY_CHANGED] = a[INPUT_KEY_STATE] != state;
-			
 			a[INPUT_KEY_STATE] = state;
 			return true;
 		}
@@ -54,7 +51,7 @@ function inputHandleEvent(eventName, state)
 
 function inputKeyEvent(event)
 {
-	if (inputHandleEvent(event.key, event.type == "keydown"))
+	if (inputHandleEvent(event.key.toLowerCase(), event.type == "keydown"))
 	{
 		event.preventDefault();
 	}
