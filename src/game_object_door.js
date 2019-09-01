@@ -25,18 +25,11 @@ class GameObjectDoor extends GameObject
 		this.open = false;
 		this.color = "#886";
 		
-		for (a of _game.objects)
+		if (_game.isActivationGroupActive(this.activationGroup))
 		{
-			if (a instanceof GameObjectSwitch && a.active && a.activationGroup == this.activationGroup)
-			{
-				this.open = true;
-				// break;
-			}
-		}
-		
-		if (this.open)
-		{
+			this.open = true;
 			this.color = "#332";
+			// break;
 		}
 		
 		this.collisionTarget = !this.open;

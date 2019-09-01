@@ -65,6 +65,21 @@ class Game
 		}
 	}
 	
+	isActivationGroupActive(n)
+	{
+		let a;
+		
+		for (a of this.objects)
+		{
+			if (a.active && a.activationGroup == n)
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	handleRoomSelectInput()
 	{
 		if ((_inputControls[CONTROL_UP][INPUT_KEY_STATE] && _inputControls[CONTROL_UP][INPUT_KEY_CHANGED]) || (_inputControls[CONTROL_LEFT][INPUT_KEY_STATE] && _inputControls[CONTROL_LEFT][INPUT_KEY_CHANGED]))
