@@ -13,6 +13,8 @@ Object types
 - [ ] automated moving platform
 - [ ] spring/bounce
 - [ ] spear in wall?
+- [ ] icy (slippery) ground
+- [ ] mud (sticky) ground
 
 Features
 - [x] collision between player and object (1)
