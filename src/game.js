@@ -54,7 +54,7 @@ class Game
 			}
 			else if (a[0] == OBJ_SWITCH)
 			{
-				this.objects.push(new GameObjectSwitch(a[1], a[2], a[3], room));
+				this.objects.push(new GameObjectSwitch(a[1], a[2], a[3], a[4], a[5], room));
 			}
 		}
 		

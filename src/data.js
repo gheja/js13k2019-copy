@@ -34,7 +34,7 @@ let _levels = [
 			[ OBJ_STARTPOINT, 8, 2 ], // [ type, x, y, (optional parameters) ]
 			[ OBJ_STARTPOINT, 6, 6 ],
 			[ OBJ_DOOR, 4, 8, 1 ],
-			[ OBJ_SWITCH, 2, 3, 1 ]
+			[ OBJ_SWITCH, 2, 3, 1, 0, 0 ]
 		]
 	}
 ];

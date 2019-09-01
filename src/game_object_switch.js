@@ -2,29 +2,71 @@
 
 class GameObjectSwitch extends GameObject
 {
-	constructor(x, y, activationGroup, room)
+	constructor(x, y, activationGroup, sticky, inverted, room)
 	{
 		super(x, y + 0.5, 1, 0.2, room);
 		
 		this.active = false;
 		this.collisionTarget = true;
 		this.activationGroup = activationGroup;
+		
+		this.sticky = sticky;
+		this.inverted = inverted;
+		
+		this.stickyHandled = false;
+	}
+	
+	reset()
+	{
+		// default
+		this.active = this.inverted;
+		
+		this.defaultReset();
 	}
 	
 	tick()
 	{
-		let a;
+		let a, playerOnThis;
 		
-		this.active = false;
-		this.color = "#171";
+		playerOnThis = false;
 		
+		// check if player is standing on this
 		for (a of _game.objects)
 		{
 			if (a instanceof GameObjectPlayer && a.collidedObjects[DIRECTION_DOWN] == this)
 			{
-				this.active = true;
+				playerOnThis = true;
+				// break;
 			}
 		}
+		
+		if (this.sticky)
+		{
+			// just stepped on
+			if (!this.stickyHandled && playerOnThis)
+			{
+				// toggle
+				this.active = !this.active;
+				this.stickyHandled = true;
+			}
+			
+			// just stepped off
+			if (this.stickyHandled && !playerOnThis)
+			{
+				this.stickyHandled = false;
+			}
+		}
+		else
+		{
+			this.active = this.inverted;
+			
+			if (playerOnThis)
+			{
+				this.active = !this.active;
+			}
+		}
+		
+		this.color = "#151";
 		
 		if (this.active)
 		{
