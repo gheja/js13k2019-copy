@@ -123,6 +123,12 @@ class Game
 		}
 	}
 	
+	deactivateRoom()
+	{
+		this.activeRoomIndex = -1;
+		this.mode = GAME_MODE_ROOM_SELECT;
+	}
+	
 	resetRoom(index)
 	{
 		let a;
@@ -135,8 +141,7 @@ class Game
 			}
 			else if (this.mode == GAME_MODE_ROOM_PLAYING)
 			{
-				this.activeRoomIndex = -1;
-				this.mode = GAME_MODE_ROOM_SELECT;
+				this.deactivateRoom();
 			}
 		}
 		

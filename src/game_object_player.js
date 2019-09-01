@@ -65,6 +65,13 @@ class GameObjectPlayer extends GameObject
 				this.speedX += 4/10;
 			}
 		}
+		
+		// deactivate room but onyl when recording, don't replay it
+		if (c[CONTROL_ACTION_2][INPUT_KEY_STATE] && c[CONTROL_ACTION_2][INPUT_KEY_CHANGED] && this.recording)
+		{
+			this.stopRecording();
+			_game.deactivateRoom();
+		}
 	}
 	
 	tick()
@@ -105,6 +112,11 @@ class GameObjectPlayer extends GameObject
 	{
 		this.recording = true;
 		this.recordedControls.length = 0;
+	}
+	
+	stopRecording()
+	{
+		this.recording = false;
 	}
 	
 	reset()
