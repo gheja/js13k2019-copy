@@ -4,7 +4,7 @@ class GameObjectDoor extends GameObject
 {
 	constructor(x, y, activationGroup)
 	{
-		super(x, y, 1, 1, -1);
+		super(x, y, 0.2, 1, -1);
 		
 		if (DEBUG)
 		{
