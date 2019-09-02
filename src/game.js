@@ -28,7 +28,8 @@ class Game
 		classes = [
 			GameObjectPlayer, // OBJ_STARTPOINT == 0
 			GameObjectDoor, // OBJ_DOOR == 1
-			GameObjectSwitch // OBJ_SWITCH == 2
+			GameObjectSwitch, // OBJ_SWITCH == 2
+			GameObjectGoal // OBJ_GOAL == 3
 		];
 		
 		this.level = data;
@@ -181,6 +182,10 @@ class Game
 				}
 			}
 		}
+	}
+	
+	win()
+	{
 	}
 	
 	tick()
