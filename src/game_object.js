@@ -45,29 +45,13 @@ class GameObject
 		objects = _game.objects;
 		
 		// calculate where the point to be checked is located
-		x = this.x;
-		if (dx < 0)
-		{
-			x -= this.width / 2;
-		}
-		else if (dx > 0)
-		{
-			x += this.width / 2;
-		}
-		
-		y = this.y;
-		if (dy < 0)
-		{
-			y -= this.height / 2;
-		}
-		else if (dy > 0)
-		{
-			y += this.height / 2;
-		}
+		x = this.x + dx;
+		y = this.y + dy;
 		
 		// check if the point is on any collidable object, return it if any
 		for (a of objects)
 		{
+			// don't check collision with ourselves or objects that should not be checked
 			if (a == this || !a.collisionTarget)
 			{
 				continue;
@@ -93,10 +77,10 @@ class GameObject
 		// which leads to intersect when colliding on corners
 		
 		this.collidedObjects = [
-			this.getCollidedObject(0, -1), // top
-			this.getCollidedObject(1, 0), // right
-			this.getCollidedObject(0, 1), // bottom
-			this.getCollidedObject(-1, 0) // left
+			this.getCollidedObject(0, -this.height / 2), // top
+			this.getCollidedObject(this.width / 2, 0), // right
+			this.getCollidedObject(0, this.height / 2), // bottom
+			this.getCollidedObject(-this.width / 2, 0) // left
 		];
 	}
 	
@@ -105,10 +89,10 @@ class GameObject
 		let a, b, c, d;
 		
 		a = Math.round(Math.abs(this.speedX));
-		b = this.speedX < 0 ? -1 : 1;
+		b = Math.sign(this.speedX);
 		
 		c = Math.round(Math.abs(this.speedY));
-		d = this.speedY < 0 ? -1 : 1;
+		d = Math.sign(this.speedY);
 		
 		while (a > 0 || c > 0)
 		{
