@@ -3,7 +3,8 @@ Object types
 - [x] door (1)
 - [x] switch (1)
   - [x] momentary (1)
-  - [ ] on/off (1)
+  - [x] on/off (1)
+- [ ] goal (1)
 - [ ] laser
 - [ ] ladder
 - [ ] static platform
