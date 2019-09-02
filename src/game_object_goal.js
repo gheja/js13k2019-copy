@@ -11,7 +11,7 @@ class GameObjectGoal extends GameObject
 			this.color = "#ea0";
 		}
 		
-		this.collisionTarget = true;
+		this.collisionTarget = false;
 		this.tickRound = 3;
 	}
 	

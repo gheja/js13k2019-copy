@@ -22,6 +22,8 @@ class GameObject
 		this.gravity = false;
 		this.collisionActor = false;
 		this.collisionTarget = false;
+		this.overlappedObjects = [];
+		this.overlappedObjectBlocks = false;
 		this.speedX = 0;
 		this.speedY = 0;
 		this.ticks = 0;
@@ -38,30 +40,16 @@ class GameObject
 		}
 	}
 	
-	getCollidedObject(dx, dy)
+	getObjectAt(x, y)
 	{
-		let objects, x, y, a;
-		
-		objects = _game.objects;
-		
-		// calculate where the point to be checked is located
-		x = this.x + dx;
-		y = this.y + dy;
-		
-		// check if the point is on any collidable object, return it if any
-		for (a of objects)
+		let a;
+		for (a of _game.objects)
 		{
-			// don't check collision with ourselves or objects that should not be checked
-			if (a == this || !a.collisionTarget)
-			{
-				continue;
-			}
-			
 			if (
-				(a.x - a.width / 2 <= x) &&
-				(a.x + a.width / 2 >= x) &&
-				(a.y - a.height / 2 <= y) &&
-				(a.y + a.height / 2 >= y)
+				a.x - a.width / 2 <= x &&
+				a.x + a.width / 2 >= x &&
+				a.y - a.height / 2 <= y &&
+				a.y + a.height / 2 >= y
 			)
 			{
 				return a;
@@ -71,16 +59,51 @@ class GameObject
 		return null;
 	}
 	
+	updateOverlap()
+	{
+		let a;
+		
+		function aabb(o1, o2)
+		{
+			// Thanks super at StackOverflow: https://stackoverflow.com/a/25342644/460571
+			return !(
+				o1.x + o1.width  / 2 < o2.x - o2.width  / 2 ||
+				o1.y + o1.height / 2 < o2.y - o2.height / 2 ||
+				o1.x - o1.width  / 2 > o2.x + o2.width  / 2 ||
+				o1.y - o1.height / 2 > o2.y + o2.height / 2
+			);
+		}
+		
+		this.overlappedObjects.length = 0;
+		this.overlappedObjectBlocks = false;
+		
+		// check if the point is on any collidable object, return it if any
+		for (a of _game.objects)
+		{
+			// don't check collision with ourselves or objects that should not be checked
+			if (a == this)
+			{
+				continue;
+			}
+			
+			if (aabb(this, a))
+			{
+				this.overlappedObjects.push(a);
+				this.overlappedObjectBlocks = this.overlappedObjectBlocks || a.collisionTarget;
+			}
+		}
+	}
+	
 	updateCollisions()
 	{
 		// TODO: currently only checks four points on the edges
 		// which leads to intersect when colliding on corners
 		
 		this.collidedObjects = [
-			this.getCollidedObject(0, -this.height / 2), // top
-			this.getCollidedObject(this.width / 2, 0), // right
-			this.getCollidedObject(0, this.height / 2), // bottom
-			this.getCollidedObject(-this.width / 2, 0) // left
+			this.getObjectAt(this.x,                      this.y - this.height / 2 - 1), // top
+			this.getObjectAt(this.x + this.width / 2 + 1, this.y), // right
+			this.getObjectAt(this.x,                      this.y + this.height / 2 + 1), // bottom
+			this.getObjectAt(this.x - this.width / 2 - 1, this.y), // left
 		];
 	}
 	
@@ -96,16 +119,15 @@ class GameObject
 		
 		while (a > 0 || c > 0)
 		{
-			this.updateCollisions();
-			
 			if (a > 0)
 			{
-				if ((b < 0 && !this.collidedObjects[DIRECTION_LEFT]) || (b > 0 && !this.collidedObjects[DIRECTION_RIGHT]))
+				this.x += b;
+				
+				this.updateOverlap();
+				
+				if (this.overlappedObjectBlocks)
 				{
-					this.x += b;
-				}
-				else
-				{
+					this.x -= b;
 					a = 0;
 					b = 0;
 					this.speedX = 0;
@@ -116,12 +138,13 @@ class GameObject
 			
 			if (c > 0)
 			{
-				if ((d < 0 && !this.collidedObjects[DIRECTION_UP]) || (d > 0 && !this.collidedObjects[DIRECTION_DOWN]))
+				this.y += d;
+				
+				this.updateOverlap();
+				
+				if (this.overlappedObjectBlocks)
 				{
-					this.y += d;
-				}
-				else
-				{
+					this.y -= d;
 					c = 0;
 					d = 0;
 					this.speedY = 0;
@@ -130,6 +153,8 @@ class GameObject
 				c--;
 			}
 		}
+		
+		this.updateCollisions();
 	}
 	
 	defaultTick()

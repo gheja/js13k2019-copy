@@ -86,6 +86,7 @@ class GameObjectPlayer extends GameObject
 		c = this.recordedControls[this.ticks];
 		
 		this.updateCollisions();
+		this.updateOverlap();
 		
 		if (c)
 		{
