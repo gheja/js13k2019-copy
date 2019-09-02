@@ -13,6 +13,7 @@ class Game
 		this.highlightedRoomIndex = 0;
 		this.roomCount = 2;
 		this.mode = GAME_MODE_ROOM_SELECT;
+		this.won = false;
 		this.ticks = 0;
 	}
 	
@@ -62,6 +63,8 @@ class Game
 		{
 			a.reset();
 		}
+		
+		this.won = false;
 	}
 	
 	isActivationGroupActive(n)
@@ -186,6 +189,12 @@ class Game
 	
 	win()
 	{
+		this.won = true;
+		
+		if (DEBUG)
+		{
+			document.body.style.background = "#262";
+		}
 	}
 	
 	tick()

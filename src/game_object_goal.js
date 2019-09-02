@@ -15,7 +15,7 @@ class GameObjectGoal extends GameObject
 		this.tickRound = 3;
 	}
 	
-	collidedWithPlayer(player)
+	overlappedBy(obj)
 	{
 		_game.win();
 	}
