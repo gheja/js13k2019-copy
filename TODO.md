@@ -5,6 +5,9 @@ Object types
   - [x] momentary (1)
   - [x] on/off (1)
 - [ ] goal (1)
+- [ ] spikes on ground (2)
+- [ ] spikes on wall
+- [ ] spikes on ceiling
 - [ ] laser
 - [ ] ladder
 - [ ] static platform
