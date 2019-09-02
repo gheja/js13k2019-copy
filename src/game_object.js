@@ -90,6 +90,9 @@ class GameObject
 			{
 				this.overlappedObjects.push(a);
 				this.overlappedObjectBlocks = this.overlappedObjectBlocks || a.collisionTarget;
+				
+				// trigger the overlap
+				a.overlappedBy(this);
 			}
 		}
 	}
@@ -186,5 +189,9 @@ class GameObject
 	reset()
 	{
 		this.defaultReset();
+	}
+	
+	overlappedBy(obj)
+	{
 	}
 }
