@@ -28,12 +28,18 @@ class GameObject
 		this.speedY = 0;
 		this.ticks = 0;
 		this.tickRound = 2;
+		this.destroyed = false;
 		
 		this.collidedObjects = [ null, null, null, null ]; // top, right, bottom, left
 	}
 	
 	draw()
 	{
+		if (this.destroyed)
+		{
+			return;
+		}
+		
 		if (DEBUG)
 		{
 			_gfx.drawDebugRectangle(this.x, this.y, this.width, this.height, this.color);
@@ -184,6 +190,7 @@ class GameObject
 		this.speedX = 0;
 		this.speedY = 0;
 		this.ticks = 0;
+		this.destroyed = false;
 	}
 	
 	reset()

@@ -18,5 +18,6 @@ class GameObjectGoal extends GameObject
 	overlappedBy(obj)
 	{
 		_game.win();
+		this.destroyed = true;
 	}
 }
