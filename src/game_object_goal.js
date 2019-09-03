@@ -2,9 +2,9 @@
 
 class GameObjectGoal extends GameObject
 {
-	constructor(x, y)
+	constructor(x, y, room)
 	{
-		super(x, y, 0.2, 0.2, -1);
+		super(x, y, 0.2, 0.2, room);
 		
 		if (DEBUG)
 		{
