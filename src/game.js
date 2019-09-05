@@ -66,6 +66,7 @@ class Game
 			a.reset();
 		}
 		
+		this.ticks = 0;
 		this.won = false;
 	}
 	
