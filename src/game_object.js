@@ -46,25 +46,6 @@ class GameObject
 		}
 	}
 	
-	getObjectAt(x, y)
-	{
-		let a;
-		for (a of _game.objects)
-		{
-			if (
-				a.x - a.width / 2 <= x &&
-				a.x + a.width / 2 >= x &&
-				a.y - a.height / 2 <= y &&
-				a.y + a.height / 2 >= y
-			)
-			{
-				return a;
-			}
-		}
-		
-		return null;
-	}
-	
 	updateOverlap()
 	{
 		let a;
@@ -109,10 +90,10 @@ class GameObject
 		// which leads to intersect when colliding on corners
 		
 		this.collidedObjects = [
-			this.getObjectAt(this.x,                      this.y - this.height / 2 - 1), // top
-			this.getObjectAt(this.x + this.width / 2 + 1, this.y), // right
-			this.getObjectAt(this.x,                      this.y + this.height / 2 + 1), // bottom
-			this.getObjectAt(this.x - this.width / 2 - 1, this.y), // left
+			_game.getObjectAt(this.x,                      this.y - this.height / 2 - 1), // top
+			_game.getObjectAt(this.x + this.width / 2 + 1, this.y), // right
+			_game.getObjectAt(this.x,                      this.y + this.height / 2 + 1), // bottom
+			_game.getObjectAt(this.x - this.width / 2 - 1, this.y), // left
 		];
 	}
 	

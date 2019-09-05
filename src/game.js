@@ -151,6 +151,26 @@ class Game
 		}
 	}
 	
+	getObjectAt(x, y)
+	{
+		let a;
+		
+		for (a of this.objects)
+		{
+			if (
+				a.x - a.width / 2 <= x &&
+				a.x + a.width / 2 >= x &&
+				a.y - a.height / 2 <= y &&
+				a.y + a.height / 2 >= y
+			)
+			{
+				return a;
+			}
+		}
+		
+		return null;
+	}
+	
 	deactivateRoom()
 	{
 		this.activeRoomIndex = -1;
