@@ -2,6 +2,7 @@
 
 let _gfx;
 let _game;
+let _editor;
 
 function init()
 {
@@ -12,4 +13,7 @@ function init()
 	_game = new Game();
 	_game.init();
 	_game.loadLevel(_levels[0])
+	
+	_editor = new Editor();
+	_editor.init();
 }

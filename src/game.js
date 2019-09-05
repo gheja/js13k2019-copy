@@ -261,6 +261,11 @@ class Game
 		}
 		
 		inputAcknowledge();
+		
+		if (DEBUG && _editor)
+		{
+			_editor.tick();
+		}
 	}
 	
 	renderFrame()
@@ -284,6 +289,11 @@ class Game
 		
 		a = (this.ticks % this.level.times[1][0]) / this.level.times[1][0];
 		_gfx.drawDebugProgressBar(390, 280, 80, 5, a, "#ccc");
+		
+		if (DEBUG && _editor)
+		{
+			_editor.draw();
+		}
 	}
 	
 	frame()

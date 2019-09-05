@@ -1,0 +1,33 @@
+#editor-controls
+{
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 300px;
+	background: #444;
+	padding: 4px;
+	border: 2px solid #555;
+}
+
+#editor-controls hr
+{
+	border: 1px solid #555;
+}
+
+#editor-export-window
+{
+	position: fixed;
+	top: 200px;
+	right: 0;
+	background: #444;
+	border: 2px solid #555;
+	padding: 4px;
+	display: none;
+}
+
+#editor-export-text
+{
+	width: 300px;
+	height: 400px;
+	display: block;
+}
