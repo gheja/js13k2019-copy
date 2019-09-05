@@ -15,6 +15,8 @@ class Game
 		this.mode = GAME_MODE_ROOM_SELECT;
 		this.won = false;
 		this.ticks = 0;
+		
+		this.paused = false;
 	}
 	
 	setHint(status, hintArrows, hintAction1, hintAction2)
@@ -265,7 +267,11 @@ class Game
 	
 	frame()
 	{
-		this.tick();
+		if (!this.paused)
+		{
+			this.tick();
+		}
+		
 		this.renderFrame();
 		
 		_raf(this.frame.bind(this));
