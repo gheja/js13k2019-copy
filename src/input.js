@@ -51,6 +51,14 @@ function inputHandleEvent(eventName, state)
 
 function inputKeyEvent(event)
 {
+	if (DEBUG)
+	{
+		if (_game.paused)
+		{
+			return;
+		}
+	}
+	
 	if (inputHandleEvent(event.key.toLowerCase(), event.type == "keydown"))
 	{
 		event.preventDefault();
