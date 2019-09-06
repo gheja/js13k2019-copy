@@ -28,6 +28,27 @@ class Gfx
 		this.ctx.fillRect((x - width / 2 + 50) * DEBUG_DRAW_SCALE, (y - height / 2 + 50) * DEBUG_DRAW_SCALE, width * DEBUG_DRAW_SCALE, height * DEBUG_DRAW_SCALE);
 	}
 	
+	drawDebugCross(x, y, width, height, color)
+	{
+		if (!DEBUG)
+		{
+			return;
+		}
+		
+		this.ctx.strokeStyle = color;
+		this.ctx.lineWidth = 1;
+		
+		this.ctx.beginPath();
+		
+		this.ctx.moveTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE + 50) * DEBUG_DRAW_SCALE + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE - height / 2 + 50) * DEBUG_DRAW_SCALE + 0.5);
+		this.ctx.lineTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE + 50) * DEBUG_DRAW_SCALE + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE  + height / 2 + 50) * DEBUG_DRAW_SCALE + 0.5);
+		
+		this.ctx.moveTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE - width / 2 + 50) * DEBUG_DRAW_SCALE + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE  + 50) * DEBUG_DRAW_SCALE + 0.5);
+		this.ctx.lineTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE + width / 2 + 50) * DEBUG_DRAW_SCALE + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE  + 50) * DEBUG_DRAW_SCALE + 0.5);
+		
+		this.ctx.stroke();
+	}
+	
 	drawDebugProgressBar(x, y, width, height, position, color)
 	{
 		if (!DEBUG)

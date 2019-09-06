@@ -320,12 +320,20 @@ class Editor
 	
 	draw()
 	{
-		let x, y, m, color, a;
+		let x, y, m, color, a, color2;
 		
 		_gfx.drawDebugRectangle(this.cursorX, this.cursorY, 2, 2, "#ff0");
 		
+		color2 = "";
+		
+		if (this.tool == "walls")
+		{
+			color2 = "200,200,200";
+		}
 		if (this.tool == "rooms")
 		{
+			color2 = "200,200,60";
+			
 			for (y=0; y<this.level.height; y++)
 			{
 				for (x=0; x<this.level.width; x++)
@@ -343,6 +351,8 @@ class Editor
 		}
 		else if (this.tool == "objects")
 		{
+			color2 = "60,200,200";
+			
 			if (this.selectedObjectIndex !== -1)
 			{
 				a = this.level.objects[this.selectedObjectIndex];
@@ -355,6 +365,17 @@ class Editor
 				a = this.level.objects[this.highlightedObjectIndex];
 				
 				_gfx.drawDebugRectangle(a[1] * GAME_OBJECT_COORDINATE_SCALE, a[2] * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, "rgba(255,255,0,0.5");
+			}
+		}
+		
+		if (color2 != "")
+		{
+			for (y=-1; y<this.level.height; y++)
+			{
+				for (x=-1; x<this.level.width; x++)
+				{
+					_gfx.drawDebugCross(x * GAME_OBJECT_COORDINATE_SCALE, y * GAME_OBJECT_COORDINATE_SCALE, 0.2 * GAME_OBJECT_COORDINATE_SCALE, 0.2 * GAME_OBJECT_COORDINATE_SCALE, "rgba(" + color2 + ",0.4)");
+				}
 			}
 		}
 	}
