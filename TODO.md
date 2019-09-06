@@ -19,6 +19,7 @@ Object types
 - [ ] spear in wall?
 - [ ] icy (slippery) ground
 - [ ] mud (sticky) ground
+- [ ] ability selection (4?)
 
 Features
 - [x] collision between player and object (1)
@@ -48,9 +49,14 @@ Misc
 - [ ] gamepad support
 
 Editor
-- [ ] wall layer (2)
-- [ ] room layer (2)
-- [ ] objects (2)
+- [x] wall layer (2)
+- [x] room layer (2)
+- [x] objects (2)
+- [ ] add new object (3)
+- [ ] level size (3)
+- [ ] ability setup
+- [ ] mouse movement
+- [ ] grid with colors for tools
 
 Menu
 - [ ] main menu
@@ -72,5 +78,37 @@ SFX
 ...
 
 Misc
-- [ ] automatic build system (2-3)
-- [ ] travis integration (3)
+- [ ] automatic build system (+)
+- [ ] travis integration (+)
+
+Notes
+
+a grafika lehetne vektorgrafikus, egy 32x32-es griden görbék, kitöltések,
+vonalvastagságok, aztán az objektumnál egy tulajdonság, hogy ténylegesen
+mekkora. így nem kéne óriási/túl kicsi számokkal dolgozni, csak
+egészekkel. scale-elésnél megmaradhatnának az arányok.
+
+a masrshmallow emberke lehetne akár csak egy jó vastag görbéből, a
+körvonala egy még vastagabb görbe mögötte. megúsznám a sok koordinátát,
+ami a teljes alakzat külső részéhez kell. az árnyalást pedig extar
+görbedarabokkal lehetne rárakni
+
+egy objektum több ilyen grafikai cuccból állhatna össze (pl. test,
+szemek, száj, kezek és lábak), újrahasználva a grafikákat, pozíció és
+forgatás is lehet. a változó cuccokat (pl. szem és száj) még nem tudom,
+hogy lehetne megoldani, de akár az objektumot kirajzoló eljárásban
+if()-elve
+
+a háttér/gfx (a "fal", ami legelől van; a bal oldalsó fal; a padló; a
+háttér) legyen előre renderelve és blokkokban kirakva? vagy legyen 3-4
+layer és megfelelő helyen maszkolva? note: ez statikus, elég szintenként
+egyszer renderelni
+
+hangokat lehetne zenei (sonant-x?) hangszerekkel csinálni, esetleg egy
+sima külön pattern egy hangjeggyel a lejátszásukra
+
+pálya megnyereésénél automatikusan legyen vége, vag csak kiírja, hogy
+nyertél és külön gombbal lehet továbbmenni?
+
+nyerés után összegző képernyő?
+
