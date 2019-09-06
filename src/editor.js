@@ -148,6 +148,20 @@ class Editor
 		}
 	}
 	
+	handleButtonNewObject()
+	{
+		let b, i;
+		
+		// convert to array - thx https://www.hacksparrow.com/javascript/convert-arguments-to-array.html
+		b = Array.prototype.slice.call(arguments);
+		
+		b = b.slice(0, b.length - 1);
+		
+		this.level.objects.push(b);
+		
+		this.sendLevelToGame();
+	}
+	
 	handleButtonImport()
 	{
 		let a;
@@ -480,6 +494,11 @@ class Editor
 		this.controlsAddButton("tool_walls", "Walls", this.handleButtonTools.bind(this));
 		this.controlsAddButton("tool_rooms", "Rooms", this.handleButtonTools.bind(this));
 		this.controlsAddButton("tool_objects", "Objects", this.handleButtonTools.bind(this));
+		this.controlsAddSeparator();
+		this.controlsAddButton("new_1", "+Player", this.handleButtonNewObject.bind(this, OBJ_STARTPOINT, 0, 0));
+		this.controlsAddButton("new_2", "+Door", this.handleButtonNewObject.bind(this, OBJ_DOOR, 0, 0, 1));
+		this.controlsAddButton("new_3", "+Switch", this.handleButtonNewObject.bind(this, OBJ_SWITCH, 0, 0, 1, 0, 0));
+		this.controlsAddButton("new_4", "+Goal", this.handleButtonNewObject.bind(this, OBJ_GOAL, 0, 0));
 		this.controlsAddSeparator();
 		
 		this.initExportImportDom();
