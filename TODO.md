@@ -61,6 +61,7 @@ Editor
 - [ ] ability setup
 - [ ] mouse movement
 - [ ] grid with colors for tools
+- [ ] delete objects (2)
 
 Menu
 - [ ] main menu
