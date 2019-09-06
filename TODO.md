@@ -21,6 +21,10 @@ Object types
 - [ ] mud (sticky) ground
 - [ ] ability selection (4?)
 
+Powerups/objects
+- [ ] coin
+- [ ] time pause powerup
+
 Features
 - [x] collision between player and object (1)
 - [ ] collision between object and object
