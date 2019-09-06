@@ -14,6 +14,49 @@
 	border: 1px solid #555;
 }
 
+#editor-controls label
+{
+	display: block;
+	float: left;
+	width: 120px;
+	clear: both;
+	color: #ccc;
+	text-align: right;
+	font-size: 8pt;
+	margin: 2px 4px 4px 0;
+}
+
+#editor-controls button
+{
+	margin: 0 4px 0 0;
+	background: #333;
+	border: 2px solid #555;
+	padding: 4px;
+	color: #ccc;
+	text-align: right;
+	font-size: 8pt;
+	margin: 0 4px 4px 0;
+}
+
+#editor-controls button:disabled
+{
+	color: #333;
+	background: #555;
+	border: 2px solid #555;
+}
+
+#editor-controls input
+{
+	display: block;
+	width: 60px;
+	float: left;
+	background: #111;
+	border: 1px solid #555;
+	padding: 2px 4px 2px 4px;
+	color: #fff;
+	font-size: 8pt;
+}
+
 #editor-export-window
 {
 	position: fixed;

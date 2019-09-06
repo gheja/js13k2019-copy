@@ -191,24 +191,13 @@ class Editor
 		a.style.display = (a.style.display == "block") ? "none" : "block";
 	}
 	
-	handleButtonTools(event)
+	handleButtonTools(tool)
 	{
 		this.selectedObjectIndex = -1;
 		this.highlightedObjectIndex = -1;
 		this.controlsDeleteTemporaryObjects();
 		
-		if (event.target == this.controls["tool_walls"])
-		{
-			this.tool = "walls";
-		}
-		else if (event.target == this.controls["tool_rooms"])
-		{
-			this.tool = "rooms";
-		}
-		else if (event.target == this.controls["tool_objects"])
-		{
-			this.tool = "objects";
-		}
+		this.tool = tool;
 	}
 	
 	handleControlIntegerEvent(event)
@@ -253,12 +242,15 @@ class Editor
 		bindEvent(obj, "click", callback);
 		
 		this.controlsDom.appendChild(obj);
-		this.controls[name] = obj;
+		this.controls[name] = { label: null, object:  obj };
 	}
 	
 	controlsAddInteger(name, title, index, i, value, min, max, temporary)
 	{
-		let obj;
+		let label, obj;
+		
+		label = document.createElement("label");
+		label.innerHTML = title + ":";
 		
 		obj = document.createElement("input");
 		obj.name = name;
@@ -275,8 +267,9 @@ class Editor
 		bindEvent(obj, "keydown", this.handleControlIntegerEvent.bind(this));
 		bindEvent(obj, "scroll", this.handleControlIntegerEvent.bind(this));
 		
+		this.controlsDom.appendChild(label);
 		this.controlsDom.appendChild(obj);
-		this.controls[name] = obj;
+		this.controls[name] = { label: label, object:  obj };
 	}
 	
 	controlsAddSeparator()
@@ -284,7 +277,9 @@ class Editor
 		let obj;
 		
 		obj = document.createElement("hr");
+		
 		this.controlsDom.appendChild(obj);
+		this.controls[name] = { label: null, object:  obj };
 	}
 	
 	controlsCreateForObject(obj, index)
@@ -301,7 +296,16 @@ class Editor
 	
 	controlsDelete(name)
 	{
-		this.controlsDom.removeChild(this.controls[name]);
+		if (this.controls[name].label)
+		{
+			this.controlsDom.removeChild(this.controls[name].label);
+		}
+		
+		if (this.controls[name].object)
+		{
+			this.controlsDom.removeChild(this.controls[name].object);
+		}
+		
 		delete(this.controls[name]);
 	}
 	
@@ -311,7 +315,7 @@ class Editor
 		
 		for (i in this.controls)
 		{
-			if (this.controls[i].dataset.temporary)
+			if (this.controls[i].object.dataset.temporary)
 			{
 				this.controlsDelete(i);
 			}
@@ -438,9 +442,9 @@ class Editor
 	{
 		this.tool = "walls";
 		
-		this.controls["tool_walls"].disabled = false;
-		this.controls["tool_rooms"].disabled = false;
-		this.controls["tool_objects"].disabled = false;
+		this.controls["tool_walls"].object.disabled = false;
+		this.controls["tool_rooms"].object.disabled = false;
+		this.controls["tool_objects"].object.disabled = false;
 		
 /*
 		this.gui.destroy();
@@ -461,9 +465,9 @@ class Editor
 	{
 		this.tool = "play";
 		
-		this.controls["tool_walls"].disabled = true;
-		this.controls["tool_rooms"].disabled = true;
-		this.controls["tool_objects"].disabled = true;
+		this.controls["tool_walls"].object.disabled = true;
+		this.controls["tool_rooms"].object.disabled = true;
+		this.controls["tool_objects"].object.disabled = true;
 		
 /*
 		this.gui.destroy();
@@ -512,9 +516,9 @@ class Editor
 		this.controlsAddButton("stopstart", "Stop/start", this.handleButtonStopStart.bind(this));
 		this.controlsAddButton("exportimport", "Export/import", this.handleButtonExportWindow.bind(this));
 		this.controlsAddSeparator();
-		this.controlsAddButton("tool_walls", "Walls", this.handleButtonTools.bind(this));
-		this.controlsAddButton("tool_rooms", "Rooms", this.handleButtonTools.bind(this));
-		this.controlsAddButton("tool_objects", "Objects", this.handleButtonTools.bind(this));
+		this.controlsAddButton("tool_walls", "Walls", this.handleButtonTools.bind(this, "walls"));
+		this.controlsAddButton("tool_rooms", "Rooms", this.handleButtonTools.bind(this, "rooms"));
+		this.controlsAddButton("tool_objects", "Objects", this.handleButtonTools.bind(this, "objects"));
 		this.controlsAddSeparator();
 		this.controlsAddButton("new_1", "+Player", this.handleButtonNewObject.bind(this, OBJ_STARTPOINT, 0, 0));
 		this.controlsAddButton("new_2", "+Door", this.handleButtonNewObject.bind(this, OBJ_DOOR, 0, 0, 1));
