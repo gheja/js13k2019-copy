@@ -91,13 +91,7 @@ class Editor
 		else if (this.tool == "objects")
 		{
 			this.selectedObjectIndex = this.highlightedObjectIndex;
-			
-			this.controlsDeleteTemporaryObjects();
-			
-			if (this.selectedObjectIndex != -1)
-			{
-				this.controlsCreateForObject(this.level.objects[this.selectedObjectIndex], this.selectedObjectIndex);
-			}
+			this.updateObjectSelection();
 		}
 		
 		this.sendLevelToGame();
@@ -159,9 +153,53 @@ class Editor
 		
 		this.level.objects.push(b);
 		
+		// select the new object immediately
+		this.selectedObjectIndex = this.level.objects.length - 1;
+		this.updateObjectSelection();
+		
 		this.sendLevelToGame();
 	}
 	
+	handleButtonDelObject()
+	{
+		let i, a;
+		
+		if (this.selectedObjectIndex == -1)
+		{
+			return;
+		}
+		
+		a = [];
+		
+		for (i=0; i<this.level.objects.length; i++)
+		{
+			if (i == this.selectedObjectIndex)
+			{
+				continue;
+			}
+			
+			a.push(this.level.objects[i]);
+		}
+		
+		this.level.objects = _copy(a);
+		
+		// unselect it
+		this.selectedObjectIndex = -1;
+		this.updateObjectSelection();
+		
+		this.sendLevelToGame();
+	}
+	
+	handleButtonReset()
+	{
+		if (!window.confirm("Are you sure?"))
+		{
+			return;
+		}
+		
+		this.level = _copy(_levels[0]);
+		this.sendLevelToGame();
+	}
 	handleButtonImport()
 	{
 		let a;
@@ -218,6 +256,19 @@ class Editor
 		this.level.objects[int(event.target.dataset.objectIndex)][int(event.target.dataset.propertyIndex)] = int(event.target.value);
 		
 		this.sendLevelToGame();
+	}
+	
+	updateObjectSelection()
+	{
+		// // force this tool
+		// this.controls["tool_objects"].object.click();
+		
+		this.controlsDeleteTemporaryObjects();
+		
+		if (this.selectedObjectIndex != -1)
+		{
+			this.controlsCreateForObject(this.level.objects[this.selectedObjectIndex], this.selectedObjectIndex);
+		}
 	}
 	
 	controlsInit()
@@ -515,15 +566,17 @@ class Editor
 		this.controlsInit();
 		this.controlsAddButton("stopstart", "Stop/start", this.handleButtonStopStart.bind(this));
 		this.controlsAddButton("exportimport", "Export/import", this.handleButtonExportWindow.bind(this));
+		this.controlsAddButton("reset", "Reset", this.handleButtonReset.bind(this));
 		this.controlsAddSeparator();
 		this.controlsAddButton("tool_walls", "Walls", this.handleButtonTools.bind(this, "walls"));
 		this.controlsAddButton("tool_rooms", "Rooms", this.handleButtonTools.bind(this, "rooms"));
 		this.controlsAddButton("tool_objects", "Objects", this.handleButtonTools.bind(this, "objects"));
 		this.controlsAddSeparator();
-		this.controlsAddButton("new_1", "+Player", this.handleButtonNewObject.bind(this, OBJ_STARTPOINT, 0, 0));
-		this.controlsAddButton("new_2", "+Door", this.handleButtonNewObject.bind(this, OBJ_DOOR, 0, 0, 1));
-		this.controlsAddButton("new_3", "+Switch", this.handleButtonNewObject.bind(this, OBJ_SWITCH, 0, 0, 1, 0, 0));
-		this.controlsAddButton("new_4", "+Goal", this.handleButtonNewObject.bind(this, OBJ_GOAL, 0, 0));
+		this.controlsAddButton("obj_1", "+Player", this.handleButtonNewObject.bind(this, OBJ_STARTPOINT, 0, 0));
+		this.controlsAddButton("obj_2", "+Door", this.handleButtonNewObject.bind(this, OBJ_DOOR, 0, 0, 1));
+		this.controlsAddButton("obj_3", "+Switch", this.handleButtonNewObject.bind(this, OBJ_SWITCH, 0, 0, 1, 0, 0));
+		this.controlsAddButton("obj_4", "+Goal", this.handleButtonNewObject.bind(this, OBJ_GOAL, 0, 0));
+		this.controlsAddButton("obj_delete", "del", this.handleButtonDelObject.bind(this));
 		this.controlsAddSeparator();
 		
 		this.initExportImportDom();
