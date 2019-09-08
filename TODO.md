@@ -51,17 +51,18 @@ Misc
 - [x] input handler (1)
 - [x] input sequence record/replay (1)
 - [ ] gamepad support
+- [ ] screen position, zoom, etc.
 
 Editor
 - [x] wall layer (2)
 - [x] room layer (2)
 - [x] objects (2)
-- [ ] add new object (3)
+- [x] add new object (3)
 - [ ] level size (3)
 - [ ] ability setup
 - [ ] mouse movement
-- [ ] grid with colors for tools
-- [ ] delete objects (2)
+- [x] grid with colors for tools
+- [x] delete objects (2)
 
 Menu
 - [ ] main menu
