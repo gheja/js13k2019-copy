@@ -9,12 +9,12 @@
 	border: 2px solid #555;
 }
 
-#editor-controls hr
+.editor hr
 {
 	border: 1px solid #555;
 }
 
-#editor-controls label
+.editor label
 {
 	display: block;
 	float: left;
@@ -26,7 +26,7 @@
 	margin: 2px 4px 4px 0;
 }
 
-#editor-controls button
+.editor button
 {
 	margin: 0 4px 0 0;
 	background: #333;
@@ -38,14 +38,14 @@
 	margin: 0 4px 4px 0;
 }
 
-#editor-controls button:disabled
+.editor button:disabled
 {
 	color: #333;
 	background: #555;
 	border: 2px solid #555;
 }
 
-#editor-controls input
+.editor input
 {
 	display: block;
 	width: 60px;
@@ -57,7 +57,18 @@
 	font-size: 8pt;
 }
 
-#editor-export-window
+.editor textarea
+{
+	display: block;
+	background: #111;
+	border: 1px solid #555;
+	padding: 2px 4px 2px 4px;
+	color: #fff;
+	font-size: 8pt;
+}
+
+#editor-export-window,
+#editor-export-shape-window
 {
 	position: fixed;
 	top: 200px;
@@ -68,9 +79,15 @@
 	display: none;
 }
 
-#editor-export-text
+#editor-export-text,
+#editor-export-shape-text
 {
 	width: 300px;
 	height: 400px;
 	display: block;
+}
+
+#editor-export-shape-text.failed
+{
+	background: #441100;
 }

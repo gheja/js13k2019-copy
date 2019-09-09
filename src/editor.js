@@ -46,6 +46,8 @@ class Editor
 		this.controlsDom = null;
 		
 		this.tool = "play";
+		
+		this.currentShape = { "points": [ [ 0, 0, 0, 0 ] ], "lineWidth": 1, "lineColor": "ffffff", "fillColor": "cccccc" };
 	}
 	
 	handleMouseDown(event)
@@ -92,6 +94,9 @@ class Editor
 		{
 			this.selectedObjectIndex = this.highlightedObjectIndex;
 			this.updateObjectSelection();
+		}
+		else if (this.tool == "shape")
+		{
 		}
 		
 		this.sendLevelToGame();
@@ -199,7 +204,12 @@ class Editor
 		
 		this.level = _copy(_levels[0]);
 		this.sendLevelToGame();
+		
+		this.editedShape = { "points": [ [ 0, 0, 0, 0 ] ], "lineWidth": 1, "lineColor": "ffffff", "fillColor": "cccccc" };
+		document.getElementById("editor-export-shape-text").value = JSON.stringify(this.editedShape);
+		this.saveShapeToStorage();
 	}
+	
 	handleButtonImport()
 	{
 		let a;
@@ -215,10 +225,32 @@ class Editor
 			return;
 		}
 		
-		this.level = a
+		this.level = a;
 		
 		this.sendLevelToGame();
 	}
+	
+/*
+	handleButtonImportShape()
+	{
+		let a;
+		
+		try
+		{
+			a = JSON.parse(document.getElementById("editor-export-shape-text").value);
+		}
+		catch (error)
+		{
+			alert(error);
+			
+			return;
+		}
+		
+		this.currentShape = a;
+		
+		this.saveShapeToStorage();
+	}
+*/
 	
 	handleButtonExportWindow()
 	{
@@ -229,6 +261,15 @@ class Editor
 		a.style.display = (a.style.display == "block") ? "none" : "block";
 	}
 	
+	setShapeWindowVisibility(value)
+	{
+		let a;
+		
+		a = document.getElementById("editor-export-shape-window");
+		
+		a.style.display = value ? "block" : "none";
+	}
+	
 	handleButtonTools(tool)
 	{
 		this.selectedObjectIndex = -1;
@@ -236,6 +277,8 @@ class Editor
 		this.controlsDeleteTemporaryObjects();
 		
 		this.tool = tool;
+		
+		this.setShapeWindowVisibility(tool == "shape");
 	}
 	
 	handleControlIntegerEvent(event)
@@ -277,6 +320,7 @@ class Editor
 		
 		obj = document.createElement("div");
 		obj.id = "editor-controls";
+		obj.className = "editor";
 		
 		this.controlsDom = obj;
 		
@@ -437,12 +481,50 @@ class Editor
 	
 	tick()
 	{
+		this.updateEditedShape();
+	}
+	
+	updateEditedShape()
+	{
+		let obj, a, success;
 		
+		obj = document.getElementById("editor-export-shape-text");
+		
+		success = false;
+		
+		try
+		{
+			a = JSON.parse(obj.value);
+			success = true;
+		}
+		catch (error)
+		{
+		}
+		
+		if (!success)
+		{
+			obj.className = "failed";
+			return;
+		}
+		
+		obj.className = "";
+		
+		this.currentShape = a;
+		
+		this.saveShapeToStorage();
 	}
 	
 	updateExportWindow()
 	{
 		document.getElementById("editor-export-text").value = JSON.stringify(this.level);
+	}
+	
+	updateExportShapeWindow(a)
+	{
+		// // would be nice to show the stored text (to maintain stored formatting) but it needs escaping etc.
+		// document.getElementById("editor-export-shape-text").value = a;
+		
+		document.getElementById("editor-export-shape-text").value = JSON.stringify(this.currentShape);
 	}
 	
 	getLevelFromGame()
@@ -478,6 +560,32 @@ class Editor
 		window.localStorage.setItem("js13k2019:level", JSON.stringify(this.level));
 		
 		this.updateExportWindow();
+	}
+	
+	loadShapeFromStorage()
+	{
+		let a;
+		
+		a = window.localStorage.getItem("js13k2019:shape");
+		
+		if (!a)
+		{
+			return;
+		}
+		
+		this.currentShape = JSON.parse(a);
+		
+		this.updateExportShapeWindow(a);
+	}
+	
+	saveShapeToStorage()
+	{
+		// // store the text instead to maintain formatting
+		// window.localStorage.setItem("js13k2019:shape", JSON.stringify(this.currentShape));
+		
+		window.localStorage.setItem("js13k2019:shape", document.getElementById("editor-export-shape-text").value);
+		
+		// this.updateExportShapeWindow();
 	}
 	
 	a(e)
@@ -538,6 +646,7 @@ class Editor
 		
 		div = document.createElement("div")
 		div.id = "editor-export-window";
+		div.className = "editor";
 		
 		obj = document.createElement("textarea");
 		obj.id = "editor-export-text";
@@ -546,6 +655,70 @@ class Editor
 		obj = document.createElement("button");
 		obj.innerHTML = "Import";
 		bindEvent(obj, "click", this.handleButtonImport.bind(this));
+		div.appendChild(obj);
+		
+		document.body.appendChild(div);
+	}
+	
+	initExportImportShapeDom()
+	{
+		let div, obj;
+		
+		div = document.createElement("div")
+		div.id = "editor-export-shape-window";
+		div.className = "editor";
+		
+		obj = document.createElement("textarea");
+		obj.id = "editor-export-shape-text";
+		div.appendChild(obj);
+		
+/*
+		obj = document.createElement("button");
+		obj.innerHTML = "Import";
+		bindEvent(obj, "click", this.handleButtonImportShape.bind(this));
+		div.appendChild(obj);
+*/
+		
+		obj = document.createElement("hr");
+		div.appendChild(obj);
+		
+		obj = document.createElement("label");
+		obj.innerHTML = "Draw inspect";
+		div.appendChild(obj);
+		
+		obj = document.createElement("input");
+		obj.id = "editor-export-shape-draw-inspect"
+		obj.type = "checkbox";
+		div.appendChild(obj);
+		
+		obj = document.createElement("label");
+		obj.innerHTML = "Draw scale";
+		div.appendChild(obj);
+		
+		obj = document.createElement("input");
+		obj.id = "editor-export-shape-draw-scale"
+		obj.type = "text";
+		obj.value = "1";
+		div.appendChild(obj);
+		
+		obj = document.createElement("label");
+		obj.innerHTML = "Draw X";
+		div.appendChild(obj);
+		
+		obj = document.createElement("input");
+		obj.id = "editor-export-shape-draw-x"
+		obj.type = "text";
+		obj.value = "1";
+		div.appendChild(obj);
+		
+		obj = document.createElement("label");
+		obj.innerHTML = "Draw Y";
+		div.appendChild(obj);
+		
+		obj = document.createElement("input");
+		obj.id = "editor-export-shape-draw-y"
+		obj.type = "text";
+		obj.value = "1";
 		div.appendChild(obj);
 		
 		document.body.appendChild(div);
@@ -571,6 +744,7 @@ class Editor
 		this.controlsAddButton("tool_walls", "Walls", this.handleButtonTools.bind(this, "walls"));
 		this.controlsAddButton("tool_rooms", "Rooms", this.handleButtonTools.bind(this, "rooms"));
 		this.controlsAddButton("tool_objects", "Objects", this.handleButtonTools.bind(this, "objects"));
+		this.controlsAddButton("tool_shape", "Shape", this.handleButtonTools.bind(this, "shape"));
 		this.controlsAddSeparator();
 		this.controlsAddButton("obj_1", "+Player", this.handleButtonNewObject.bind(this, OBJ_STARTPOINT, 0, 0));
 		this.controlsAddButton("obj_2", "+Door", this.handleButtonNewObject.bind(this, OBJ_DOOR, 0, 0, 1));
@@ -580,8 +754,10 @@ class Editor
 		this.controlsAddSeparator();
 		
 		this.initExportImportDom();
+		this.initExportImportShapeDom();
 		
 		this.loadFromStorage();
+		this.loadShapeFromStorage();
 		
 		// if load was successful
 		if (this.level)
