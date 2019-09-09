@@ -60,4 +60,51 @@ class Gfx
 		this.ctx.fillRect(x * DEBUG_DRAW_SCALE, y * DEBUG_DRAW_SCALE, (width * position) * DEBUG_DRAW_SCALE, height * DEBUG_DRAW_SCALE);
 		this.ctx.fillRect(x * DEBUG_DRAW_SCALE, (y + height - 1) * DEBUG_DRAW_SCALE, width * DEBUG_DRAW_SCALE, 1 * DEBUG_DRAW_SCALE);
 	}
+	
+	drawShape(shape, x, y, scale)
+	{
+		let i, a;
+		
+		this.ctx.lineCap = "round";
+		
+		this.ctx.beginPath();
+		
+		////
+		this.ctx.moveTo(shape.points[0][0], shape.points[0][1]);
+		
+		for (i=1; i<shape.points.length; i++)
+		{
+			this.ctx.bezierCurveTo(shape.points[i - 1][2], shape.points[i - 1][3], shape.points[i][2], shape.points[i][3], shape.points[i][0], shape.points[i][1]);
+		}
+		////
+		
+		if (shape.lineColor)
+		{
+			this.ctx.strokeStyle = shape.lineColor;
+			this.ctx.lineWidth = shape.lineWidth;
+			this.ctx.stroke();
+		}
+		
+		if (shape.fillColor)
+		{
+			this.ctx.fillStyle = shape.fillColor;
+			this.ctx.fill();
+		}
+		
+		// debug controls
+		
+		this.ctx.beginPath();
+		
+		////
+		for (i=0; i<shape.points.length; i++)
+		{
+			this.ctx.moveTo(shape.points[i][0], shape.points[i][1]);
+			this.ctx.lineTo(shape.points[i][2], shape.points[i][3]);
+		}
+		////
+		
+		this.ctx.strokeStyle = "#aaa";
+		this.ctx.lineWidth = 1;
+		this.ctx.stroke();
+	}
 }
