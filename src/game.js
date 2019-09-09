@@ -261,11 +261,6 @@ class Game
 		}
 		
 		inputAcknowledge();
-		
-		if (DEBUG && _editor)
-		{
-			_editor.tick();
-		}
 	}
 	
 	renderFrame()
@@ -301,6 +296,11 @@ class Game
 		if (!this.paused)
 		{
 			this.tick();
+		}
+		
+		if (DEBUG && _editor)
+		{
+			_editor.tick();
 		}
 		
 		this.renderFrame();
