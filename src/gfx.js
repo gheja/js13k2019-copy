@@ -66,6 +66,7 @@ class Gfx
 		let i, a;
 		
 		this.ctx.lineCap = "round";
+		this.ctx.lineJoin = "round";
 		
 		if (DEBUG)
 		{
