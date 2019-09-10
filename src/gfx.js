@@ -61,11 +61,16 @@ class Gfx
 		this.ctx.fillRect(x * DEBUG_DRAW_SCALE, (y + height - 1) * DEBUG_DRAW_SCALE, width * DEBUG_DRAW_SCALE, 1 * DEBUG_DRAW_SCALE);
 	}
 	
-	drawShape(shape, x, y, scale)
+	drawShape(shape, x, y, scale, drawControlPoints)
 	{
 		let i, a;
 		
 		this.ctx.lineCap = "round";
+		
+		this.ctx.save();
+		this.ctx.transform(1, 0, 0, 1, -16, -16);
+		this.ctx.transform(scale, 0, 0, scale, x, y);
+		
 		
 		this.ctx.beginPath();
 		
@@ -78,33 +83,40 @@ class Gfx
 		}
 		////
 		
+		if (shape.fillColor)
+		{
+			this.ctx.fillStyle = "#" + shape.fillColor;
+			this.ctx.fill();
+		}
+		
 		if (shape.lineColor)
 		{
-			this.ctx.strokeStyle = shape.lineColor;
+			this.ctx.strokeStyle = "#" + shape.lineColor;
 			this.ctx.lineWidth = shape.lineWidth;
 			this.ctx.stroke();
 		}
 		
-		if (shape.fillColor)
+		if (DEBUG)
 		{
-			this.ctx.fillStyle = shape.fillColor;
-			this.ctx.fill();
+			if (drawControlPoints)
+			{
+				this.ctx.beginPath();
+				
+				for (i=0; i<shape.points.length; i++)
+				{
+					this.ctx.moveTo(shape.points[i][0], shape.points[i][1]);
+					this.ctx.lineTo(shape.points[i][2], shape.points[i][3]);
+				}
+				
+				this.ctx.strokeStyle = "#aaa";
+				this.ctx.lineWidth = 0.5;
+				this.ctx.setLineDash([ 1, 1 ]);
+				this.ctx.stroke();
+				
+				this.ctx.setLineDash([ ]);
+			}
 		}
 		
-		// debug controls
-		
-		this.ctx.beginPath();
-		
-		////
-		for (i=0; i<shape.points.length; i++)
-		{
-			this.ctx.moveTo(shape.points[i][0], shape.points[i][1]);
-			this.ctx.lineTo(shape.points[i][2], shape.points[i][3]);
-		}
-		////
-		
-		this.ctx.strokeStyle = "#aaa";
-		this.ctx.lineWidth = 1;
-		this.ctx.stroke();
+		this.ctx.restore();
 	}
 }
