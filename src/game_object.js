@@ -19,6 +19,7 @@ class GameObject
 		{
 			this.color = "#333";
 		}
+		this.shapeIndex = -1;
 		this.gravity = false;
 		this.collisionActor = false;
 		this.collisionTarget = false;
@@ -40,9 +41,23 @@ class GameObject
 			return;
 		}
 		
-		if (DEBUG)
+		if (DEBUG && _game.paused)
 		{
 			_gfx.drawDebugRectangle(this.x, this.y, this.width, this.height, this.color);
+		}
+		else
+		{
+			if (DEBUG)
+			{
+				if (this.shapeIndex == -1)
+				{
+					// throw "Invalid shape index.";
+					_gfx.drawShapePlaceholder(null, this.x, this.y, 1, true);
+					return;
+				}
+			}
+			
+			_gfx.drawShape(_shapes[this.shapeIndex], this.x, this.y, 1, true);
 		}
 	}
 	

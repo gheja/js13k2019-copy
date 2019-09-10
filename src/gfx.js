@@ -78,6 +78,7 @@ class Gfx
 		this.ctx.save();
 		this.ctx.transform(scale, 0, 0, scale, x, y);
 		this.ctx.transform(1, 0, 0, 1, -25, -25);
+		this.ctx.transform(1, 0, 0, 1, 50, 50);
 		
 		
 		this.ctx.beginPath();
@@ -126,6 +127,36 @@ class Gfx
 				
 				this.ctx.setLineDash([ ]);
 			}
+		}
+		
+		this.ctx.restore();
+	}
+	
+	drawShapePlaceholder(shape, x, y, scale, drawControlPoints)
+	{
+		let i, a;
+		
+		this.ctx.lineCap = "round";
+		this.ctx.lineJoin = "round";
+		
+		this.ctx.save();
+		this.ctx.transform(scale, 0, 0, scale, x, y);
+		this.ctx.transform(1, 0, 0, 1, -25, -25);
+		this.ctx.transform(1, 0, 0, 1, 50, 50);
+		
+		if (DEBUG)
+		{
+			this.ctx.beginPath();
+			
+			this.ctx.strokeStyle = "#aaa";
+			this.ctx.lineWidth = 0.5;
+			this.ctx.setLineDash([ 1, 1 ]);
+			
+			this.ctx.rect(0, 0, 50, 50);
+			
+			this.ctx.stroke();
+			
+			this.ctx.setLineDash([ ]);
 		}
 		
 		this.ctx.restore();
