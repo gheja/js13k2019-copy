@@ -7,7 +7,7 @@ class GameObjectSwitch extends GameObject
 		super(x, y + 0.5, 1, 0.2, room);
 		
 		this.active = false;
-		this.collisionTarget = true;
+		this.collisionTarget = false;
 		this.activationGroup = activationGroup;
 		
 		this.sticky = sticky;
@@ -33,7 +33,7 @@ class GameObjectSwitch extends GameObject
 		// check if player is standing on this
 		for (a of _game.objects)
 		{
-			if (a instanceof GameObjectPlayer && a.collidedObjects[DIRECTION_DOWN] == this)
+			if (a instanceof GameObjectPlayer && a.overlappedObjects.indexOf(this) !== -1)
 			{
 				playerOnThis = true;
 				// break;
