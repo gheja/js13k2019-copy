@@ -75,8 +75,8 @@ class Gfx
 		}
 		
 		this.ctx.save();
-		this.ctx.transform(1, 0, 0, 1, -16, -16);
 		this.ctx.transform(scale, 0, 0, scale, x, y);
+		this.ctx.transform(1, 0, 0, 1, -25, -25);
 		
 		
 		this.ctx.beginPath();
@@ -118,6 +118,9 @@ class Gfx
 				this.ctx.strokeStyle = "#aaa";
 				this.ctx.lineWidth = 0.5;
 				this.ctx.setLineDash([ 1, 1 ]);
+				
+				this.ctx.rect(0, 0, 50, 50);
+				
 				this.ctx.stroke();
 				
 				this.ctx.setLineDash([ ]);
