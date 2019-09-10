@@ -47,7 +47,7 @@ class Editor
 		
 		this.tool = "play";
 		
-		this.currentShape = { "points": [ [ 0, 0, 0, 0 ] ], "lineWidth": 1, "lineColor": "ffffff", "fillColor": "cccccc" };
+		this.currentShape = {"points":[[20,0,20,3],[35,10,26,12],[30,27,25,21],[10,27,14,21],[5,10,14,12],[20,0,20,3]],"lineWidth":2,"lineColor":"eebb00","fillColor":"ffee00"};
 	}
 	
 	handleMouseDown(event)
