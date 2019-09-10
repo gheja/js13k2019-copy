@@ -68,17 +68,36 @@ class Gfx
 		this.ctx.lineCap = "round";
 		this.ctx.lineJoin = "round";
 		
+		this.ctx.save();
+		
+		// TODO: merge transform()s
+		
+		this.ctx.transform(scale, 0, 0, scale, x, y);
+		this.ctx.transform(1, 0, 0, 1, -25, -25);
+		this.ctx.transform(1, 0, 0, 1, 50, 50);
+		
 		if (DEBUG)
 		{
-			// set some odd color as default to see if color specs are invalid (ctx refuses to change to invalid)
+			if (drawControlPoints)
+			{
+				this.ctx.strokeStyle = "#aaa";
+				this.ctx.lineWidth = 0.5;
+				this.ctx.setLineDash([ 1, 1 ]);
+				this.ctx.rect(0, 0, 50, 50);
+				
+				this.ctx.setLineDash([ 1, 1 ]);
+				
+				this.ctx.stroke();
+				
+				this.ctx.setLineDash([ ]);
+			}
+			
+			// set some odd color as default to easily spot invalid color specs (ctx refuses to change to invalid)
 			this.ctx.fillStyle = "#f0f";
 			this.ctx.strokeStyle = "#f0f"
 		}
 		
-		this.ctx.save();
-		this.ctx.transform(scale, 0, 0, scale, x, y);
-		this.ctx.transform(1, 0, 0, 1, -25, -25);
-		this.ctx.transform(1, 0, 0, 1, 50, 50);
+		this.ctx.transform(1, 0, 0, 1, shape.padY, shape.padX);
 		
 		
 		this.ctx.beginPath();
@@ -120,8 +139,6 @@ class Gfx
 				this.ctx.strokeStyle = "#aaa";
 				this.ctx.lineWidth = 0.5;
 				this.ctx.setLineDash([ 1, 1 ]);
-				
-				this.ctx.rect(0, 0, 50, 50);
 				
 				this.ctx.stroke();
 				
