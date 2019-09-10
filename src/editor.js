@@ -470,7 +470,7 @@ class Editor
 		{
 			if (document.getElementById("editor-export-shape-draw-inspect").checked)
 			{
-				_gfx.drawShape(this.currentShape, 300, 300, 5, true);
+				_gfx.drawShape(this.currentShape, 0, 0, 5, true);
 			}
 			else
 			{
