@@ -39,3 +39,22 @@ let _levels = [
 		]
 	}
 ];
+
+let _shapes = [
+	{
+		"points":[
+			[20,0,20,3],
+			[35,10,26,12],
+			[30,27,25,21],
+			[10,27,14,21],
+			[5,10,14,12],
+			[20,0,20,3]
+		],
+		"lineWidth":2,
+		"lineColor":"eb0",
+		"fillColor":"fe0",
+		"padX": 10,
+		"padY": 6
+	}, // SHAPE_STAR
+	
+];
