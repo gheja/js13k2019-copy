@@ -429,7 +429,7 @@ class Editor
 		{
 			color2 = "200,200,200";
 		}
-		if (this.tool == "rooms")
+		else if (this.tool == "rooms")
 		{
 			color2 = "200,200,60";
 			
@@ -464,6 +464,23 @@ class Editor
 				a = this.level.objects[this.highlightedObjectIndex];
 				
 				_gfx.drawDebugRectangle(a[1] * GAME_OBJECT_COORDINATE_SCALE, a[2] * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, "rgba(255,255,0,0.5");
+			}
+		}
+		else if (this.tool == "shape")
+		{
+			if (document.getElementById("editor-export-shape-draw-inspect").checked)
+			{
+				_gfx.drawShape(this.currentShape, 300, 300, 5, true);
+			}
+			else
+			{
+				_gfx.drawShape(
+					this.currentShape,
+					document.getElementById("editor-export-shape-draw-x").value * GAME_OBJECT_COORDINATE_SCALE,
+					document.getElementById("editor-export-shape-draw-y").value * GAME_OBJECT_COORDINATE_SCALE,
+					document.getElementById("editor-export-shape-draw-scale").value,
+					false
+				);
 			}
 		}
 		
@@ -604,6 +621,7 @@ class Editor
 		this.controls["tool_walls"].object.disabled = false;
 		this.controls["tool_rooms"].object.disabled = false;
 		this.controls["tool_objects"].object.disabled = false;
+		this.controls["tool_shape"].object.disabled = false;
 		
 /*
 		this.gui.destroy();
@@ -627,7 +645,8 @@ class Editor
 		this.controls["tool_walls"].object.disabled = true;
 		this.controls["tool_rooms"].object.disabled = true;
 		this.controls["tool_objects"].object.disabled = true;
-		
+		this.controls["tool_shape"].object.disabled = true;
+		this.setShapeWindowVisibility(false);
 /*
 		this.gui.destroy();
 		
