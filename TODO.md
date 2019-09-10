@@ -84,7 +84,7 @@ SFX
 ...
 
 Misc
-- [ ] automatic build system (+)
+- [x] automatic build system (+)
 - [ ] travis integration (+)
 
 Notes
