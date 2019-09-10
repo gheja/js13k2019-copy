@@ -45,7 +45,7 @@ class Game
 		];
 		
 		this.level = data;
-		this.objects = [];
+		this.objects.length = 0;
 		
 		for (y=0; y<this.level.height; y++)
 		{
