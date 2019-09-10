@@ -8,7 +8,6 @@ cd build
 
 
 ### minimize JS
-
 files=`cat ../src/index.html | grep -Eo 'src="[^"]+' | cut -d \" -f 2- | grep -v "editor"`
 
 {
@@ -46,8 +45,10 @@ cat index.min.html | \
 		-e 'd}' \
 	> index.html
 
+
 ### zip it
 zip -r9 game.zip index.html
+
 
 git log --pretty=oneline -1
 
