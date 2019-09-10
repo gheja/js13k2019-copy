@@ -17,11 +17,20 @@ class Game
 		this.ticks = 0;
 		
 		this.paused = false;
+		this.hint = "";
+		this.lastHint = "";
 	}
 	
 	setHint(status, hintArrows, hintAction1, hintAction2)
 	{
-		document.getElementById("hint").innerHTML = status + "<br/><b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2;
+		this.hint = status + "<br/><b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2;
+		
+		if (this.hint != this.lastHint)
+		{
+			document.getElementById("hint").innerHTML = this.hint;
+			
+			this.lastHint = this.hint;
+		}
 	}
 	
 	loadLevel(data)
