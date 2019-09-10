@@ -67,6 +67,13 @@ class Gfx
 		
 		this.ctx.lineCap = "round";
 		
+		if (DEBUG)
+		{
+			// set some odd color as default to see if color specs are invalid (ctx refuses to change to invalid)
+			this.ctx.fillStyle = "#f0f";
+			this.ctx.strokeStyle = "#f0f"
+		}
+		
 		this.ctx.save();
 		this.ctx.transform(1, 0, 0, 1, -16, -16);
 		this.ctx.transform(scale, 0, 0, scale, x, y);
