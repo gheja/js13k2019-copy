@@ -7,8 +7,8 @@ class Gfx
 		this.canvas = document.getElementById(canvasId);
 		this.ctx = this.canvas.getContext("2d");
 		
-		this.canvas.width = 600;
-		this.canvas.height = 600;
+		this.canvas.width = _canvasWidth;
+		this.canvas.height = _canvasHeight;
 	}
 	
 	frameStart()
@@ -16,7 +16,7 @@ class Gfx
 		this.ctx.resetTransform();
 		
 		this.ctx.fillStyle = "#222";
-		this.ctx.fillRect(0, 0, 600, 600);
+		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 		
 		this.ctx.transform(1, 0, 0, 1, _padX, _padY);
 		this.ctx.transform(_zoom, 0, 0, _zoom, 0, 0);

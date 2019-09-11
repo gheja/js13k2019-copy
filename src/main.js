@@ -4,8 +4,10 @@ let _gfx;
 let _game;
 let _editor;
 let _zoom = 1;
-let _padX = 50; // pixels
-let _padY = 50; // pixels
+let _padX = 0; // pixels
+let _padY = 0; // pixels
+let _canvasWidth = 600;
+let _canvasHeight = 600;
 
 function init()
 {
