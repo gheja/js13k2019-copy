@@ -72,9 +72,10 @@ class Gfx
 		
 		// TODO: merge transform()s
 		
-		this.ctx.transform(scale, 0, 0, scale, x, y);
-		this.ctx.transform(1, 0, 0, 1, -25, -25);
+		this.ctx.transform(1, 0, 0, 1, x, y);
 		this.ctx.transform(1, 0, 0, 1, 50, 50);
+		this.ctx.transform(scale, 0, 0, scale, 0, 0);
+		this.ctx.transform(1, 0, 0, 1, -25, -25);
 		
 		if (DEBUG)
 		{
