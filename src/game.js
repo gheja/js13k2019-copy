@@ -276,10 +276,7 @@ class Game
 	{
 		let a;
 		
-		if (DEBUG)
-		{
-			_gfx.clear();
-		}
+		_gfx.frameStart();
 		
 		for (a of this.objects)
 		{

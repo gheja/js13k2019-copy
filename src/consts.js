@@ -9,7 +9,6 @@ const OBJ_GOAL = 3;
 // const OBJ_WALL = n + 1;
 
 const GAME_OBJECT_COORDINATE_SCALE = 50;
-const DEBUG_DRAW_SCALE = 1;
 
 const DIRECTION_UP = 0;
 const DIRECTION_RIGHT = 1;

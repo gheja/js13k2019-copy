@@ -113,8 +113,8 @@ class Editor
 	{
 		let i, a;
 		
-		this.cursorX = (event.clientX - 50) / (DEBUG_DRAW_SCALE);
-		this.cursorY = (event.clientY - 50) / (DEBUG_DRAW_SCALE);
+		this.cursorX = (event.clientX - _padX) / _zoom;
+		this.cursorY = (event.clientY - _padY) / _zoom;
 		this.cursorBlockX = Math.round(this.cursorX / GAME_OBJECT_COORDINATE_SCALE);
 		this.cursorBlockY = Math.round(this.cursorY / GAME_OBJECT_COORDINATE_SCALE);
 		

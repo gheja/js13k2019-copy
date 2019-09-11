@@ -11,8 +11,12 @@ class Gfx
 		this.canvas.height = 600;
 	}
 	
-	clear()
+	frameStart()
 	{
+		this.ctx.resetTransform();
+		this.ctx.transform(1, 0, 0, 1, _padX, _padY);
+		this.ctx.transform(_zoom, 0, 0, _zoom, 0, 0);
+		
 		this.ctx.fillStyle = "#222";
 		this.ctx.fillRect(0, 0, 600, 600);
 	}
@@ -25,7 +29,7 @@ class Gfx
 		}
 		
 		this.ctx.fillStyle = color;
-		this.ctx.fillRect((x - width / 2 + 50) * DEBUG_DRAW_SCALE, (y - height / 2 + 50) * DEBUG_DRAW_SCALE, width * DEBUG_DRAW_SCALE, height * DEBUG_DRAW_SCALE);
+		this.ctx.fillRect((x - width / 2), (y - height / 2), width, height);
 	}
 	
 	drawDebugCross(x, y, width, height, color)
@@ -40,11 +44,11 @@ class Gfx
 		
 		this.ctx.beginPath();
 		
-		this.ctx.moveTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE + 50) * DEBUG_DRAW_SCALE + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE - height / 2 + 50) * DEBUG_DRAW_SCALE + 0.5);
-		this.ctx.lineTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE + 50) * DEBUG_DRAW_SCALE + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE  + height / 2 + 50) * DEBUG_DRAW_SCALE + 0.5);
+		this.ctx.moveTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE) + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE - height / 2) + 0.5);
+		this.ctx.lineTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE) + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE  + height / 2) + 0.5);
 		
-		this.ctx.moveTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE - width / 2 + 50) * DEBUG_DRAW_SCALE + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE  + 50) * DEBUG_DRAW_SCALE + 0.5);
-		this.ctx.lineTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE + width / 2 + 50) * DEBUG_DRAW_SCALE + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE  + 50) * DEBUG_DRAW_SCALE + 0.5);
+		this.ctx.moveTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE - width / 2) + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE) + 0.5);
+		this.ctx.lineTo((x + 0.5 * GAME_OBJECT_COORDINATE_SCALE + width / 2) + 0.5, (y + 0.5 * GAME_OBJECT_COORDINATE_SCALE) + 0.5);
 		
 		this.ctx.stroke();
 	}
@@ -57,8 +61,8 @@ class Gfx
 		}
 		
 		this.ctx.fillStyle = color;
-		this.ctx.fillRect(x * DEBUG_DRAW_SCALE, y * DEBUG_DRAW_SCALE, (width * position) * DEBUG_DRAW_SCALE, height * DEBUG_DRAW_SCALE);
-		this.ctx.fillRect(x * DEBUG_DRAW_SCALE, (y + height - 1) * DEBUG_DRAW_SCALE, width * DEBUG_DRAW_SCALE, 1 * DEBUG_DRAW_SCALE);
+		this.ctx.fillRect(x, y, (width * position), height);
+		this.ctx.fillRect(x, (y + height - 1), width, 1);
 	}
 	
 	drawShape(shape, x, y, scale, drawControlPoints)
@@ -73,7 +77,6 @@ class Gfx
 		// TODO: merge transform()s
 		
 		this.ctx.transform(1, 0, 0, 1, x, y);
-		this.ctx.transform(1, 0, 0, 1, 50, 50);
 		this.ctx.transform(scale, 0, 0, scale, 0, 0);
 		this.ctx.transform(1, 0, 0, 1, -25, -25);
 		
@@ -160,7 +163,6 @@ class Gfx
 		this.ctx.save();
 		this.ctx.transform(scale, 0, 0, scale, x, y);
 		this.ctx.transform(1, 0, 0, 1, -25, -25);
-		this.ctx.transform(1, 0, 0, 1, 50, 50);
 		
 		if (DEBUG)
 		{
