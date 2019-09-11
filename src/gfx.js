@@ -14,11 +14,12 @@ class Gfx
 	frameStart()
 	{
 		this.ctx.resetTransform();
-		this.ctx.transform(1, 0, 0, 1, _padX, _padY);
-		this.ctx.transform(_zoom, 0, 0, _zoom, 0, 0);
 		
 		this.ctx.fillStyle = "#222";
 		this.ctx.fillRect(0, 0, 600, 600);
+		
+		this.ctx.transform(1, 0, 0, 1, _padX, _padY);
+		this.ctx.transform(_zoom, 0, 0, _zoom, 0, 0);
 	}
 	
 	drawDebugRectangle(x, y, width, height, color)
