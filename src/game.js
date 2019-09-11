@@ -291,7 +291,7 @@ class Game
 		a = (this.ticks % this.level.times[1][0]) / this.level.times[1][0];
 		_gfx.drawDebugProgressBar(390, 280, 80, 5, a, "#ccc");
 		
-		if (DEBUG && _editor)
+		if (DEBUG && _editor && this.paused)
 		{
 			_editor.draw();
 		}
@@ -304,7 +304,7 @@ class Game
 			this.tick();
 		}
 		
-		if (DEBUG && _editor)
+		if (DEBUG && _editor && this.paused)
 		{
 			_editor.tick();
 		}
