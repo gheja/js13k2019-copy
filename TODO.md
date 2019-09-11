@@ -6,46 +6,46 @@ Object types
   - [x] on/off (1)
 - [ ] goal (1)
 - [ ] spikes on ground (2)
-- [ ] spikes on wall
-- [ ] spikes on ceiling
-- [ ] laser
-- [ ] ladder
-- [ ] static platform
-- [ ] falling platform
-- [ ] one-way platform (up)
-- [ ] two-way platform?
-- [ ] automated moving platform
-- [ ] spring/bounce
-- [ ] spear in wall?
-- [ ] icy (slippery) ground
-- [ ] mud (sticky) ground
-- [ ] ability selection (4?)
+- [ ] spikes on wall (3)
+- [ ] spikes on ceiling (3)
+- [ ] ability selection (4)
+- [ ] spring/bounce (3)
+- [ ] laser (x)
+- [ ] ladder (x)
+- [ ] static platform (x)
+- [ ] falling platform (x)
+- [ ] one-way platform (up)(x)
+- [ ] two-way platform? (x)
+- [ ] automated moving platform (x)
+- [ ] spear in wall? (x)
+- [ ] icy (slippery) ground (x)
+- [ ] mud (sticky) ground (x)
 
 Powerups/objects
 - [ ] coin
-- [ ] time pause powerup
+- [ ] time pause powerup (x)
 
 Features
 - [x] collision between player and object (1)
-- [ ] collision between object and object
-- [ ] stick to object
-- [ ] player pushing object
-- [ ] player pushed by object
-- [ ] death
 - [x] gravity (1)
 - [x] switch emitter (1)
 - [x] switch receiver (1)
+- [ ] collision between object and object (x)
+- [ ] stick to object (x)
+- [ ] player pushing object (x)
+- [ ] player pushed by object (x)
+- [ ] death (x)
 
 Abilities
 - [ ] jump
 - [ ] double jump
 - [ ] wall jump
-- [ ] box push
 - [ ] dash
-- [ ] throw a spear? (and jump on it?)
-- [ ] catch/drop
-- [ ] drop -> throw
-- [ ] glide
+- [ ] box push (x)
+- [ ] throw a spear? (and jump on it?) (x)
+- [ ] catch/drop (x)
+- [ ] drop -> throw (x)
+- [ ] glide (x)
 
 Misc
 - [x] input handler (1)
@@ -60,9 +60,9 @@ Editor
 - [x] add new object (3)
 - [ ] level size (3)
 - [ ] ability setup
-- [ ] mouse movement
 - [x] grid with colors for tools
 - [x] delete objects (2)
+- [ ] mouse movement (x)
 
 Menu
 - [ ] main menu
@@ -73,6 +73,9 @@ Graphics
 - [ ] main menu
 - [ ] calibration
 - [ ] transition menu to/from game
+- [ ] floaty effect (for star?)
+- [ ] upgraded wall/floor/background gfx - rough (3)
+- [ ] (same) - fine (4)
 
 Tutorial
 ...
