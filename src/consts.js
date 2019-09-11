@@ -31,9 +31,17 @@ const GAME_MODE_ROOM_SELECT = 0;
 const GAME_MODE_ROOM_WAITING = 1;
 const GAME_MODE_ROOM_PLAYING = 2;
 
+// TODO: clean this up
 const SHAPE_STAR = 0;
-const SHAPE_PLAYER_BODY = 1;
-const SHAPE_PLAYER_LEG = 2;
-const SHAPE_PLAYER_ARM = 3;
-const SHAPE_PLAYER_EYE = 4;
-const SHAPE_PLAYER_MOUTH = 5;
+// 1: body front
+// 2: body front v2
+// 3: eye
+// 4: eye
+// 5: eye anim 1
+// 6: eye anim 2
+// 7: mouth
+// 8: leg front
+// 9: leg anim 1
+// 10: leg anim 2
+// 11: leg anim 3
+// 12: body left
