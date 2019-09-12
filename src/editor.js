@@ -623,7 +623,9 @@ class Editor
 		this.controls["tool_walls"].object.disabled = false;
 		this.controls["tool_rooms"].object.disabled = false;
 		this.controls["tool_objects"].object.disabled = false;
+/*
 		this.controls["tool_shape"].object.disabled = false;
+*/
 		
 /*
 		this.gui.destroy();
@@ -647,7 +649,9 @@ class Editor
 		this.controls["tool_walls"].object.disabled = true;
 		this.controls["tool_rooms"].object.disabled = true;
 		this.controls["tool_objects"].object.disabled = true;
+/*
 		this.controls["tool_shape"].object.disabled = true;
+*/
 		this.setShapeWindowVisibility(false);
 /*
 		this.gui.destroy();
