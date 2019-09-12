@@ -120,7 +120,6 @@ class Editor
 		
 		if (this.tool == "objects")
 		{
-//			console.log([ this.cursorX, this.cursorY ]);
 			this.highlightedObjectIndex = -1;
 			
 			for (i in this.level.objects)
@@ -230,28 +229,6 @@ class Editor
 		this.sendLevelToGame();
 	}
 	
-/*
-	handleButtonImportShape()
-	{
-		let a;
-		
-		try
-		{
-			a = JSON.parse(document.getElementById("editor-export-shape-text").value);
-		}
-		catch (error)
-		{
-			alert(error);
-			
-			return;
-		}
-		
-		this.currentShape = a;
-		
-		this.saveShapeToStorage();
-	}
-*/
-	
 	handleButtonExportWindow()
 	{
 		let a;
@@ -303,9 +280,6 @@ class Editor
 	
 	updateObjectSelection()
 	{
-		// // force this tool
-		// this.controls["tool_objects"].object.click();
-		
 		this.controlsDeleteTemporaryObjects();
 		
 		if (this.selectedObjectIndex != -1)
@@ -603,8 +577,6 @@ class Editor
 		// window.localStorage.setItem("js13k2019:shape", JSON.stringify(this.currentShape));
 		
 		window.localStorage.setItem("js13k2019:shape", document.getElementById("editor-export-shape-text").value);
-		
-		// this.updateExportShapeWindow();
 	}
 	
 	a(e)
@@ -627,15 +599,6 @@ class Editor
 		this.controls["tool_shape"].object.disabled = false;
 */
 		
-/*
-		this.gui.destroy();
-		
-		this.gui = new dat.gui.GUI();
-		this.gui.add(this, "play");
-		this.gui.add(this, "tool", [ "walls", "rooms", "objects" ]);
-		this.gui.add(this, "saveToStorage");
-*/
-		
 		this.getLevelFromGame();
 		
 		// restart the game
@@ -653,14 +616,6 @@ class Editor
 		this.controls["tool_shape"].object.disabled = true;
 */
 		this.setShapeWindowVisibility(false);
-/*
-		this.gui.destroy();
-		
-		this.gui = new dat.gui.GUI();
-		this.gui.add(this, "stop");
-		
-		this.sendLevelToGame();
-*/
 		
 		_game.paused = false;
 	}
@@ -696,13 +651,6 @@ class Editor
 		obj = document.createElement("textarea");
 		obj.id = "editor-export-shape-text";
 		div.appendChild(obj);
-		
-/*
-		obj = document.createElement("button");
-		obj.innerHTML = "Import";
-		bindEvent(obj, "click", this.handleButtonImportShape.bind(this));
-		div.appendChild(obj);
-*/
 		
 		obj = document.createElement("hr");
 		div.appendChild(obj);
