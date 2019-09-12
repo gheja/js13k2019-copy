@@ -498,7 +498,9 @@ class Editor
 	
 	tick()
 	{
+/*
 		this.updateEditedShape();
+*/
 	}
 	
 	updateEditedShape()
@@ -763,7 +765,9 @@ class Editor
 		this.controlsAddButton("tool_walls", "Walls", this.handleButtonTools.bind(this, "walls"));
 		this.controlsAddButton("tool_rooms", "Rooms", this.handleButtonTools.bind(this, "rooms"));
 		this.controlsAddButton("tool_objects", "Objects", this.handleButtonTools.bind(this, "objects"));
+/*
 		this.controlsAddButton("tool_shape", "Shape", this.handleButtonTools.bind(this, "shape"));
+*/
 		this.controlsAddSeparator();
 		this.controlsAddButton("obj_1", "+Player", this.handleButtonNewObject.bind(this, OBJ_STARTPOINT, 0, 0));
 		this.controlsAddButton("obj_2", "+Door", this.handleButtonNewObject.bind(this, OBJ_DOOR, 0, 0, 1));
