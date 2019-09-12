@@ -20,7 +20,7 @@ class Gfx
 	{
 		this.ctx.resetTransform();
 		
-		this.ctx.fillStyle = "#222";
+		this.ctx.fillStyle = "#a48";
 		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 		
 		this.ctx.transform(1, 0, 0, 1, _padX, _padY);
