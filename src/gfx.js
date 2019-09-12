@@ -16,15 +16,21 @@ class Gfx
 		this.renderSvgs();
 	}
 	
+	clearCtx(ctx)
+	{
+		ctx.resetTransform();
+		
+		// ctx.fillStyle = "#a48";
+		// ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		
+		ctx.transform(1, 0, 0, 1, _padX, _padY);
+		ctx.transform(_zoom, 0, 0, _zoom, 0, 0);
+	}
+	
 	frameStart()
 	{
-		this.ctx.resetTransform();
-		
-		this.ctx.fillStyle = "#a48";
-		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-		
-		this.ctx.transform(1, 0, 0, 1, _padX, _padY);
-		this.ctx.transform(_zoom, 0, 0, _zoom, 0, 0);
+		this.clearCtx(this.ctx);
 	}
 	
 	drawDebugRectangle(x, y, width, height, color)
