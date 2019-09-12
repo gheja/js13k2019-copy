@@ -9,6 +9,8 @@ let _padY = 0; // pixels
 let _canvasWidth = 1200;
 let _canvasHeight = 900;
 
+let _wallFrontCtx, _wallBackCtx;
+
 function init()
 {
 	inputInit();

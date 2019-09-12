@@ -14,6 +14,19 @@ class Gfx
 		this.canvas.height = _canvasHeight;
 		
 		this.renderSvgs();
+		
+		// --- wall init
+		let tmp;
+		
+		tmp = document.getElementById("canvas-back");
+		tmp.width = _canvasWidth;
+		tmp.height = _canvasHeight;
+		_wallBackCtx = tmp.getContext("2d");
+		
+		tmp = document.getElementById("canvas-front");
+		tmp.width = _canvasWidth;
+		tmp.height = _canvasHeight;
+		_wallFrontCtx = tmp.getContext("2d");
 	}
 	
 	clearCtx(ctx)
@@ -127,4 +140,117 @@ class Gfx
 		
 		this.ctx.restore();
 	}
+	
+	drawWallBlocks()
+	{
+		let _size;
+		
+		_size = 50;
+		
+		function createPattern(h, s, l, dark)
+		{
+			let canvas, ctx, i;
+			
+			canvas = document.createElement("canvas");
+			ctx = canvas.getContext("2d");
+			canvas.width = _size;
+			canvas.height = _size;
+			
+			ctx.fillStyle = "hsla(" + h + "," + s + "%," + l + "%, 1)";
+			ctx.fillRect(0, 0, _size, _size);
+			
+			ctx.fillStyle = "hsla(" + (h + 30) + "," + (s * 0.8) + "%," + l + "%, 1)";
+			
+			for (i=0; i<4; i++)
+			{
+				ctx.fillRect(i * (_size/2), 0, 13, _size);
+			}
+			
+			ctx.fillStyle = "rgba(32,32,32," + dark + ")";
+			ctx.fillRect(0, 0, _size, _size);
+			
+			return canvas;
+		}
+		
+		function drawSide(ctx, a, b, c, d, e, f, pattern)
+		{
+			ctx.save();
+// 			ctx.transform(0.5, 0, 0, 0.5, 0, 0);
+			ctx.transform(a, b, c, d, e, f);
+			ctx.drawImage(pattern, 0, 0);
+			ctx.restore();
+		}
+		
+		function drawBlock(x, y, p1, p2, p3)
+		{
+			x -= 60;
+			y -= 33;
+			
+			// drawSide(1.0,  0.00, -0.5, 0.33, _size     + x, _size   + y, p1); // bottom
+			// drawSide(0.5, -0.33,  0.0, 1.00, _size/2   + x, _size/3 + y, p1); // left
+			drawSide(_wallFrontCtx, 1.0,  0.00,  0.0, 1.00, _size/2   + x, _size/3 + y, p1); // front
+			// drawSide(1.0,  0.00,  0.0, 1.00, _size     + x, 0   + y, p1); // back
+			drawSide(_wallBackCtx, 1.0,  0.00, -0.5, 0.33, _size     + x, 0   + y, p2); // top
+			drawSide(_wallBackCtx, 0.5, -0.33,  0.0, 1.00, _size*3/2 + x, _size/3 + y, p3); // right
+		}
+		
+		function drawBackground(ctx, x, y, width, height, p4)
+		{
+			let i, j;
+			
+			for (i=0; i<width; i++)
+			{
+				for (j=0; j<height; j++)
+				{
+					ctx.drawImage(p4, x + i * _size, y + j * _size);
+				}
+			}
+		}
+		
+		// blocks must be drawn from left-to-right, down-to-up
+		function layerSort(a, b)
+		{
+			if (a.y == b.y)
+			{
+				return a.x - b.x;
+			}
+			else
+			{
+				return b.y - a.y;
+			}
+		}
+		
+		
+		this.clearCtx(_wallBackCtx);
+		this.clearCtx(_wallFrontCtx);
+		
+		// document.body.style.background = "#111";
+		
+		let p1 = createPattern(120, 80, 50, 0.2); // front
+		let p2 = createPattern(120, 80, 50, 0.0); // front
+		let p3 = createPattern(120, 80, 50, 0.4); // front
+		let p4 = createPattern(120, 80, 50, 0.7); // front
+		
+		let i, a, b;
+		
+		b = [];
+		
+		for (a of _game.objects)
+		{
+			if (a instanceof GameObjectWall)
+			{
+				b.push({ "x": a.x, "y": a.y });
+			}
+		}
+		
+		b.sort(layerSort);
+		
+		drawBackground(_wallBackCtx, 0, 0, 10, 10, p4);
+		
+		for (a of b)
+		{
+			drawBlock(a.x, a.y, p1, p2, p3);
+		}
+	}
 }
+

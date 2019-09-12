@@ -77,6 +77,8 @@ class Game
 		
 		this.ticks = 0;
 		this.won = false;
+		
+		_gfx.drawWallBlocks();
 	}
 	
 	isActivationGroupActive(n)
