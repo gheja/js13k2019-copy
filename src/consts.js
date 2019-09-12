@@ -30,17 +30,14 @@ const GAME_MODE_ROOM_SELECT = 0;
 const GAME_MODE_ROOM_WAITING = 1;
 const GAME_MODE_ROOM_PLAYING = 2;
 
-// TODO: clean this up
-const SHAPE_STAR = 0;
-// 1: body front
-// 2: body front v2
-// 3: eye
-// 4: eye
-// 5: eye anim 1
-// 6: eye anim 2
-// 7: mouth
-// 8: leg front
-// 9: leg anim 1
-// 10: leg anim 2
-// 11: leg anim 3
-// 12: body left
+const SVG_FILE_HEADER = '<svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g stroke-linecap="round" stroke-linejoin="round" stroke-width="4">';
+const SVG_FILE_FOOTER = '</g></svg>';
+
+const SVG_PLAYER_FRONT_BODY = 0;
+const SVG_PLAYER_FRONT_EYES = 1;
+const SVG_PLAYER_FRONT_EYES_BLINK = 2;
+const SVG_STAR = 3;
+const SVG_PLAYER_LEFT_BODY = 4;
+const SVG_PLAYER_LEFT_LEGS_RUN1 = 5;
+const SVG_PLAYER_LEFT_LEGS_RUN2 = 6;
+const SVG_PLAYER_LEFT_LEGS_FLYING = 7;

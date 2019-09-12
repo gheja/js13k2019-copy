@@ -19,7 +19,7 @@ class GameObject
 		{
 			this.color = "#333";
 		}
-		this.shapeIndex = -1;
+		this.svgIndex = -1;
 		this.gravity = false;
 		this.collisionActor = false;
 		this.collisionTarget = false;
@@ -41,24 +41,16 @@ class GameObject
 			return;
 		}
 		
-		if (DEBUG && _game.paused)
+		if (DEBUG)
 		{
-			_gfx.drawDebugRectangle(this.x, this.y, this.width, this.height, this.color);
-		}
-		else
-		{
-			if (DEBUG)
+			if (this.svgIndex == -1)
 			{
-				if (this.shapeIndex == -1)
-				{
-					// throw "Invalid shape index.";
-					_gfx.drawShapePlaceholder(null, this.x, this.y, 1, true);
-					return;
-				}
+				// throw "Invalid shape index.";
+				return;
 			}
-			
-			_gfx.drawShape(_shapes[this.shapeIndex], this.x, this.y, 1, true);
 		}
+		
+		_gfx.drawSvg(this.svgIndex, this.x, this.y);
 	}
 	
 	updateOverlap()

@@ -13,7 +13,7 @@ class GameObjectGoal extends GameObject
 		
 		this.collisionTarget = false;
 		this.tickRound = 3;
-		this.shapeIndex = SHAPE_STAR;
+		this.svgIndex = SVG_STAR;
 	}
 	
 	overlappedBy(obj)
