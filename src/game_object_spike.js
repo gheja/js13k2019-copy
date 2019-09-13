@@ -46,7 +46,7 @@ class GameObjectSpike extends GameObject
 		// check if player is standing on this
 		for (a of _game.objects)
 		{
-			if (!a instanceof GameObjectPlayer)
+			if (!(a instanceof GameObjectPlayer))
 			{
 				continue;
 			}
