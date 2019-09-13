@@ -28,6 +28,11 @@ class Gfx
 		tmp.width = _canvasWidth;
 		tmp.height = _canvasHeight;
 		_wallFrontCtx = tmp.getContext("2d");
+		
+		tmp = document.getElementById("canvas-transition");
+		tmp.width = _canvasWidth;
+		tmp.height = _canvasHeight;
+		_transitionCtx = tmp.getContext("2d");
 	}
 	
 	clearCtx(ctx)
