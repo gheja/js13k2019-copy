@@ -4,6 +4,7 @@ html
 	background: #222;
 	overscroll-behavior: none;
 	font-family: "Trebuchet MS";
+	font-size: 16pt;
 }
 
 canvas
