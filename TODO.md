@@ -91,7 +91,7 @@ Misc
 - [x] level progressing
 - [ ] gamepad support
 - [ ] touch support
-- [ ] hints from the player object
+- [x] hints from the player object
 - [x] auto-restart when only one room exists
 - [ ] better progressbar? above player?
 - [ ] travis integration (+)

@@ -25,6 +25,23 @@ class Game
 		this.levelIndex = 0;
 	}
 	
+	hideTip()
+	{
+		let obj;
+		
+		obj = document.getElementById("tip");
+		obj.className = "";
+	}
+	
+	showTip(s)
+	{
+		let obj;
+		
+		obj = document.getElementById("tip");
+		obj.innerHTML = s;
+		obj.className = "active";
+	}
+	
 	setHint(status, hintArrows, hintAction1, hintAction2, hintAction3)
 	{
 		// this.hint = status + "<br/><b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2;
@@ -85,6 +102,7 @@ class Game
 		this.won = false;
 		this.activeRoomIndex = -1;
 		this.highlightedRoomIndex = 0;
+		this.hideTip();
 		
 		_gfx.randomizeWallHue();
 		_gfx.drawWallBlocks();
@@ -300,6 +318,23 @@ class Game
 				if (a.tickRound == i)
 				{
 					a.tick();
+				}
+			}
+		}
+		
+		// show timed tips from level
+		if (this.level.tips)
+		{
+			for (a of this.level.tips)
+			{
+				if (a[0] + a[1] == this.ticks)
+				{
+					this.hideTip();
+				}
+				
+				if (a[0] == this.ticks)
+				{
+					this.showTip(a[2]);
 				}
 			}
 		}
