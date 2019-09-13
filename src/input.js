@@ -8,7 +8,8 @@ let _inputControls = [
 	[ false, false, [ "arrowdown", "s" ] ],
 	[ false, false, [ "arrowleft", "a" ] ],
 	[ false, false, [ "1" ] ],
-	[ false, false, [ "2" ] ]
+	[ false, false, [ "2" ] ],
+	[ false, false, [ "3" ] ]
 ];
 
 function inputAcknowledge()

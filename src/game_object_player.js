@@ -69,7 +69,7 @@ class GameObjectPlayer extends GameObject
 		}
 		
 		// deactivate room but onyl when recording, don't replay it
-		if (c[CONTROL_ACTION_2][INPUT_KEY_STATE] && c[CONTROL_ACTION_2][INPUT_KEY_CHANGED] && this.recording)
+		if (c[CONTROL_ACTION_3][INPUT_KEY_STATE] && c[CONTROL_ACTION_3][INPUT_KEY_CHANGED] && this.recording)
 		{
 			this.stopRecording();
 			_game.deactivateRoom();

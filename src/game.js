@@ -24,9 +24,10 @@ class Game
 		this.lastTickTime = null;
 	}
 	
-	setHint(status, hintArrows, hintAction1, hintAction2)
+	setHint(status, hintArrows, hintAction1, hintAction2, hintAction3)
 	{
-		this.hint = status + "<br/><b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2;
+		// this.hint = status + "<br/><b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2;
+		this.hint = status + "<br/><b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2 + " &middot; <b>[3]</b> " + hintAction3;
 		
 		if (this.hint != this.lastHint)
 		{
@@ -122,7 +123,7 @@ class Game
 	
 	handleRoomWaitingInput()
 	{
-		if ((_inputControls[CONTROL_ACTION_2][INPUT_KEY_STATE] && _inputControls[CONTROL_ACTION_2][INPUT_KEY_CHANGED]))
+		if ((_inputControls[CONTROL_ACTION_3][INPUT_KEY_STATE] && _inputControls[CONTROL_ACTION_3][INPUT_KEY_CHANGED]))
 		{
 			this.deactivateRoom();
 		}
@@ -268,17 +269,17 @@ class Game
 		
 		if (this.mode == GAME_MODE_ROOM_SELECT)
 		{
-			this.setHint("Select a room to play", "Toggle rooms", "Play", "(none)");
+			this.setHint("Select a room to play", "Toggle rooms", "Play", "(none)", "(none)");
 			this.handleRoomSelectInput();
 		}
 		else if (this.mode == GAME_MODE_ROOM_WAITING)
 		{
-			this.setHint("Wait...", "(none)", "(none)", "Cancel");
+			this.setHint("Wait...", "(none)", "(none)", "(none)", "Cancel");
 			this.handleRoomWaitingInput();
 		}
 		else
 		{
-			this.setHint("Play this room", "Walk/jump", "(none)", "Finished");
+			this.setHint("Play this room", "Walk/jump", "(none)", "Dash", "Finished");
 		}
 		
 		inputAcknowledge();

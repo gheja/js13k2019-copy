@@ -22,6 +22,7 @@ const CONTROL_DOWN = 2;
 const CONTROL_LEFT = 3;
 const CONTROL_ACTION_1 = 4;
 const CONTROL_ACTION_2 = 5;
+const CONTROL_ACTION_3 = 6;
 
 const INPUT_KEY_STATE = 0;
 const INPUT_KEY_CHANGED = 1;
