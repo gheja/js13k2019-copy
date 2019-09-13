@@ -20,6 +20,7 @@ class GameObject
 			this.color = "#333";
 		}
 		this.svgIndex = -1;
+		this.svgScale = 1;
 		this.gravity = false;
 		this.collisionActor = false;
 		this.collisionTarget = false;
@@ -50,7 +51,7 @@ class GameObject
 			}
 		}
 		
-		_gfx.drawSvg(this.svgIndex, this.x, this.y);
+		_gfx.drawSvg(this.svgIndex, this.x, this.y, false, this.svgScale);
 	}
 	
 	updateOverlap()

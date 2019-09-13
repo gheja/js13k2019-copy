@@ -128,10 +128,15 @@ class Gfx
 		}
 	}
 	
-	drawSvg(svgIndex, x, y, flip)
+	drawSvg(svgIndex, x, y, flip, scale)
 	{
+		if (scale === undefined)
+		{
+			scale = 1;
+		}
+		
 		this.ctx.save();
-		this.ctx.transform(flip ? -1 : 1, 0, 0, 1, x, y);
+		this.ctx.transform(flip ? -1 : scale, 0, 0, scale, x, y);
 		
 		this.ctx.drawImage(this.svgImages[svgIndex], -25, -25, 50, 50);
 		this.ctx.restore();
