@@ -10,6 +10,7 @@ class GameObjectPlayer extends GameObject
 		{
 			this.color = "#0e4";
 		}
+		this.killed = false;
 		this.gravity = true;
 		this.doubleJumped = false;
 		this.recording = false;
@@ -113,7 +114,7 @@ class GameObjectPlayer extends GameObject
 		this.updateCollisions();
 		this.updateOverlap();
 		
-		if (c)
+		if (c && !this.killed)
 		{
 			this.handleControls(c);
 		}
@@ -149,6 +150,7 @@ class GameObjectPlayer extends GameObject
 	{
 		this.doubleJumped = false;
 		this.recording = false;
+		this.killed = false;
 		this.defaultReset();
 	}
 }
