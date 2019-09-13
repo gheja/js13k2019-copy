@@ -11,7 +11,6 @@ class Game
 		this.objects = [];
 		this.activeRoomIndex = -1;
 		this.highlightedRoomIndex = 0;
-		this.roomCount = 2;
 		this.mode = GAME_MODE_ROOM_SELECT;
 		this.won = false;
 		this.ticks = 0;
@@ -108,12 +107,12 @@ class Game
 	{
 		if ((_inputControls[CONTROL_UP][INPUT_KEY_STATE] && _inputControls[CONTROL_UP][INPUT_KEY_CHANGED]) || (_inputControls[CONTROL_LEFT][INPUT_KEY_STATE] && _inputControls[CONTROL_LEFT][INPUT_KEY_CHANGED]))
 		{
-			this.highlightedRoomIndex = (this.highlightedRoomIndex + this.roomCount - 1) % this.roomCount;
+			this.highlightedRoomIndex = (this.highlightedRoomIndex + this.level.times.length - 1) % this.level.times.length;
 		}
 		
 		if ((_inputControls[CONTROL_DOWN][INPUT_KEY_STATE] && _inputControls[CONTROL_DOWN][INPUT_KEY_CHANGED]) || (_inputControls[CONTROL_RIGHT][INPUT_KEY_STATE] && _inputControls[CONTROL_RIGHT][INPUT_KEY_CHANGED]))
 		{
-			this.highlightedRoomIndex = (this.highlightedRoomIndex + 1) % this.roomCount;
+			this.highlightedRoomIndex = (this.highlightedRoomIndex + 1) % this.level.times.length;
 		}
 		
 		if ((_inputControls[CONTROL_ACTION_1][INPUT_KEY_STATE] && _inputControls[CONTROL_ACTION_1][INPUT_KEY_CHANGED]))
