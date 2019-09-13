@@ -21,6 +21,7 @@ class Game
 		this.lastHint = "";
 		
 		this.resizeNeeded = true;
+		this.lastTickTime = null;
 	}
 	
 	setHint(status, hintArrows, hintAction1, hintAction2)
@@ -323,10 +324,43 @@ class Game
 	
 	frame()
 	{
+		let now, ticksNeeded, i;
+		
+		// time in milliseconds
+		now = (new Date()).getTime();
+		
 		if (!this.paused)
 		{
-			this.tick();
+			if (this.lastTickTime === null)
+			{
+				ticksNeeded = 1;
+			}
+			else
+			{
+				// 60 ticks per second is the target
+				ticksNeeded = (now - this.lastTickTime) / (1000 / 60);
+				
+				// max 60 ticks (paused, unfocused, etc)
+				ticksNeeded = Math.floor(Math.min(ticksNeeded, 60));
+			}
+			
+			if (ticksNeeded > 0)
+			{
+				for (i=0; i<ticksNeeded; i++)
+				{
+					this.tick();
+				}
+				
+				this.lastTickTime = now;
+			}
 		}
+		else
+		{
+			// skip ticks when paused
+			// TODO: only in editor mode?
+			this.lastTickTime = now;
+		}
+		
 		
 		if (DEBUG && _editor && this.paused)
 		{
