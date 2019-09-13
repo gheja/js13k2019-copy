@@ -103,6 +103,7 @@ class Game
 		this.activeRoomIndex = -1;
 		this.highlightedRoomIndex = 0;
 		this.hideTip();
+		this.mode = GAME_MODE_ROOM_SELECT;
 		
 		_gfx.randomizeWallHue();
 		_gfx.drawWallBlocks();
