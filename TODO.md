@@ -51,7 +51,7 @@ Misc
 - [x] input handler (1)
 - [x] input sequence record/replay (1)
 - [ ] gamepad support
-- [ ] screen position, zoom, etc.
+- [x] screen position, zoom, etc.
 
 Editor
 - [x] wall layer (2)
@@ -72,7 +72,7 @@ Graphics
 - [ ] objects
 - [ ] main menu
 - [ ] calibration
-- [ ] transition menu to/from game
+- [x] transition menu to/from game
 - [ ] floaty effect (for star?)
 - [ ] upgraded wall/floor/background gfx - rough (3)
 - [ ] (same) - fine (4)
@@ -89,6 +89,7 @@ SFX
 Misc
 - [x] automatic build system (+)
 - [ ] travis integration (+)
+- [ ] separate ticks from frame rate
 
 Notes
 
