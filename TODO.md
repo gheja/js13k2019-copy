@@ -47,15 +47,6 @@ Abilities
 - [ ] drop -> throw (x)
 - [ ] glide (x)
 
-Misc
-- [ ] BUG: fix firefox SVG rendering
-- [x] input handler (1)
-- [x] input sequence record/replay (1)
-- [x] fix object render order
-- [ ] gamepad support
-- [ ] touch support
-- [x] screen position, zoom, etc.
-
 Editor
 - [x] wall layer (2)
 - [x] room layer (2)
@@ -90,9 +81,17 @@ SFX
 ...
 
 Misc
+- [x] input handler (1)
+- [x] input sequence record/replay (1)
+- [x] fix object render order
+- [x] screen position, zoom, etc.
 - [x] automatic build system (+)
+- [x] separate ticks from frame rate
+- [ ] BUG: fix firefox SVG rendering
+- [ ] level progressing
+- [ ] gamepad support
+- [ ] touch support
 - [ ] travis integration (+)
-- [ ] separate ticks from frame rate
 
 Notes
 
