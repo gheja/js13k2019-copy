@@ -531,6 +531,8 @@ class Editor
 	{
 		this.saveToStorage();
 		_game.loadLevel(this.level);
+		_gfx.wallHue = 0;
+		_gfx.drawWallBlocks();
 	}
 	
 	loadFromStorage()
@@ -604,6 +606,9 @@ class Editor
 		
 		// restart the game
 		_game.loadLevel(this.level);
+		
+		_gfx.wallHue = 0;
+		_gfx.drawWallBlocks();
 		
 		document.getElementById("canvas-transition").style.display = "none";
 	}

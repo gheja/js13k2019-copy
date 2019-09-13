@@ -30,7 +30,6 @@ Features
 - [x] gravity (1)
 - [x] switch emitter (1)
 - [x] switch receiver (1)
-- [ ] hints from the player object
 - [ ] collision between object and object (x)
 - [ ] stick to object (x)
 - [ ] player pushing object (x)
@@ -92,6 +91,8 @@ Misc
 - [ ] level progressing
 - [ ] gamepad support
 - [ ] touch support
+- [ ] hints from the player object
+- [ ] auto-restart when only one room exists
 - [ ] better progressbar? above player?
 - [ ] travis integration (+)
 
