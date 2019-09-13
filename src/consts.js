@@ -32,7 +32,7 @@ const GAME_MODE_ROOM_SELECT = 0;
 const GAME_MODE_ROOM_WAITING = 1;
 const GAME_MODE_ROOM_PLAYING = 2;
 
-const SVG_FILE_HEADER = '<svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g stroke-linecap="round" stroke-linejoin="round" stroke-width="4">';
+const SVG_FILE_HEADER = '<svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100px" height="100px"><g stroke-linecap="round" stroke-linejoin="round" stroke-width="4">';
 const SVG_FILE_FOOTER = '</g></svg>';
 
 const SVG_PLAYER_FRONT_BODY = 0;
