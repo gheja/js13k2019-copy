@@ -48,6 +48,7 @@ Abilities
 - [ ] glide (x)
 
 Misc
+- [ ] BUG: fix firefox SVG rendering
 - [x] input handler (1)
 - [x] input sequence record/replay (1)
 - [x] fix object render order
