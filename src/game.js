@@ -23,6 +23,8 @@ class Game
 		this.lastTickTime = null;
 		
 		this.levelIndex = 0;
+		this.nextLevelIndex = 0;
+		this.transitionTicksLeft = 0;
 	}
 	
 	hideTip()
@@ -283,8 +285,13 @@ class Game
 	
 	goToNextLevel()
 	{
-		this.levelIndex++;
-		
+		this.nextLevelIndex = this.levelIndex + 1;
+		this.transitionTicksLeft = 60;
+	}
+	
+	goToNextLevel2()
+	{
+		this.levelIndex = this.nextLevelIndex;
 		this.loadLevel(_levels[this.levelIndex]);
 	}
 	
@@ -316,6 +323,16 @@ class Game
 	tick()
 	{
 		let a, i;
+		
+		if (this.transitionTicksLeft > 0)
+		{
+			if (this.transitionTicksLeft == 30)
+			{
+				this.goToNextLevel2();
+			}
+			
+			this.transitionTicksLeft--;
+		}
 		
 		if (this.won)
 		{
@@ -423,7 +440,10 @@ class Game
 			_editor.draw();
 		}
 		
-		// _gfx.drawTransition(this.ticks % 40 / 40);
+		if (this.transitionTicksLeft > 0)
+		{
+			_gfx.drawTransition(1 - (this.transitionTicksLeft - 1) / 60);
+		}
 	}
 	
 	frame()

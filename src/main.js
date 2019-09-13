@@ -34,5 +34,6 @@ function init()
 	
 	_game = new Game();
 	_game.init();
-	_game.loadLevel(_levels[0])
+	_game.transitionTicksLeft = 30;
+	// _game.loadLevel(_levels[0]);
 }
