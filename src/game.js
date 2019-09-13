@@ -82,6 +82,8 @@ class Game
 		
 		this.ticks = 0;
 		this.won = false;
+		this.activeRoomIndex = -1;
+		this.highlightedRoomIndex = 0;
 		
 		_gfx.randomizeWallHue();
 		_gfx.drawWallBlocks();
