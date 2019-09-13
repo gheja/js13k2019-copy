@@ -312,7 +312,7 @@ class Game
 			_editor.draw();
 		}
 		
-		_gfx.drawTransition(this.ticks % 40 / 40);
+		// _gfx.drawTransition(this.ticks % 40 / 40);
 	}
 	
 	frame()
