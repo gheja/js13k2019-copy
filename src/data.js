@@ -94,7 +94,7 @@ const _svgs = [
 '<path d="m36 33 0 63 30-20 0-63z" fill="#a40" stroke="#803300"/>',
 
 // SVG_DOOR_OPEN
-'<path d="m36 97 30-20z" fill="none" stroke="#666"/>\
+'<path d="m36 97 30-20z" fill="none" stroke="#00000066"/>\
 <path d="m31 13 0 63 35-0 0-63z" fill="#803300" stroke="#520"/>'
 
 ];
