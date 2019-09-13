@@ -144,25 +144,28 @@ class Gfx
 	
 	drawTransition(progress)
 	{
-		let x, y, n, m, x1, y1;
+		let x, y, n, m, x1, y1, width, height;
+		
+		width = 600;
+		height = 600;
 		
 		this.clearCtx(_transitionCtx);
 		_transitionCtx.fillStyle = "#222";
 		_transitionCtx.beginPath();
 		
-		for (y=0; y<_canvasWidth / 50; y++)
+		for (y=0; y<width / 50; y++)
 		{
-			for (x=0; x<_canvasHeight / 50; x++)
+			for (x=0; x<height / 50; x++)
 			{
-				m = 1 - x / (_canvasWidth / 50);
+				m = 1 - x / (width / 50);
 				
 				if (progress < 0.5)
 				{
-					n = progress * 3 + (m - 1);
+					n = progress * 4 + (m - 1);
 				}
 				else
 				{
-					n = 2 - (progress - 0.5) * 3 + (m * -1);
+					n = 2 - (progress - 0.5) * 4 + (m * -1);
 				}
 				
 				n = Math.min(Math.max(n, 0), 1) * 32;
