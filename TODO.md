@@ -92,7 +92,7 @@ Misc
 - [ ] gamepad support
 - [ ] touch support
 - [ ] hints from the player object
-- [ ] auto-restart when only one room exists
+- [x] auto-restart when only one room exists
 - [ ] better progressbar? above player?
 - [ ] travis integration (+)
 

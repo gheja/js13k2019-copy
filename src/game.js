@@ -278,6 +278,13 @@ class Game
 		
 		this.ticks++;
 		
+		// if only one room exists always play that
+		if (this.level.times.length == 1)
+		{
+			this.activeRoomIndex = 0;
+			this.highlightedRoomIndex = 0;
+		}
+		
 		for (a in this.level.times)
 		{
 			if (this.ticks % this.level.times[a][0] == this.level.times[a][1])
