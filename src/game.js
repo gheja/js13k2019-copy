@@ -294,12 +294,12 @@ class Game
 		
 		_gfx.frameStart();
 		
+		this.drawRoomHighlights();
+		
 		for (a of this.objects)
 		{
 			a.draw();
 		}
-		
-		this.drawRoomHighlights();
 		
 		a = (this.ticks % this.level.times[0][0]) / this.level.times[0][0];
 		_gfx.drawDebugProgressBar(390, 80, 80, 5, a, "#ccc");
