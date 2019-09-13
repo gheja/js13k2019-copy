@@ -52,6 +52,7 @@ Misc
 - [x] input sequence record/replay (1)
 - [ ] fix object render order
 - [ ] gamepad support
+- [ ] touch support
 - [x] screen position, zoom, etc.
 
 Editor
@@ -59,24 +60,24 @@ Editor
 - [x] room layer (2)
 - [x] objects (2)
 - [x] add new object (3)
-- [ ] level size (3)
-- [ ] ability setup
 - [x] grid with colors for tools
 - [x] delete objects (2)
+- [ ] level size (x)
+- [ ] ability setup (x)
 - [ ] mouse movement (x)
 
 Menu
 - [ ] main menu
-- [ ] calibration
+- [ ] calibration (x)
 
 Graphics
 - [ ] objects
 - [ ] main menu
-- [ ] calibration
 - [x] transition menu to/from game
 - [ ] floaty effect (for star?)
-- [ ] upgraded wall/floor/background gfx - rough (3)
+- [x] upgraded wall/floor/background gfx - rough (3)
 - [ ] (same) - fine (4)
+- [ ] calibration (x)
 
 Tutorial
 ...
