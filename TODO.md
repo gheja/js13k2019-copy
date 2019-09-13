@@ -50,6 +50,7 @@ Abilities
 Misc
 - [x] input handler (1)
 - [x] input sequence record/replay (1)
+- [ ] fix object render order
 - [ ] gamepad support
 - [x] screen position, zoom, etc.
 
@@ -92,27 +93,6 @@ Misc
 - [ ] separate ticks from frame rate
 
 Notes
-
-a grafika lehetne vektorgrafikus, egy 32x32-es griden görbék, kitöltések,
-vonalvastagságok, aztán az objektumnál egy tulajdonság, hogy ténylegesen
-mekkora. így nem kéne óriási/túl kicsi számokkal dolgozni, csak
-egészekkel. scale-elésnél megmaradhatnának az arányok.
-
-a masrshmallow emberke lehetne akár csak egy jó vastag görbéből, a
-körvonala egy még vastagabb görbe mögötte. megúsznám a sok koordinátát,
-ami a teljes alakzat külső részéhez kell. az árnyalást pedig extar
-görbedarabokkal lehetne rárakni
-
-egy objektum több ilyen grafikai cuccból állhatna össze (pl. test,
-szemek, száj, kezek és lábak), újrahasználva a grafikákat, pozíció és
-forgatás is lehet. a változó cuccokat (pl. szem és száj) még nem tudom,
-hogy lehetne megoldani, de akár az objektumot kirajzoló eljárásban
-if()-elve
-
-a háttér/gfx (a "fal", ami legelől van; a bal oldalsó fal; a padló; a
-háttér) legyen előre renderelve és blokkokban kirakva? vagy legyen 3-4
-layer és megfelelő helyen maszkolva? note: ez statikus, elég szintenként
-egyszer renderelni
 
 hangokat lehetne zenei (sonant-x?) hangszerekkel csinálni, esetleg egy
 sima külön pattern egy hangjeggyel a lejátszásukra
