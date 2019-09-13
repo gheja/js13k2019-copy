@@ -398,7 +398,7 @@ class Game
 		}
 		else
 		{
-			this.setHint("Play this room", "Walk/jump", "Jump", "Dash", "Finished");
+			this.setHint("Play this room", "Walk/jump", "Jump", "Dash", "Finish room");
 		}
 		
 		inputAcknowledge();
