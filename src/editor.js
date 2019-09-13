@@ -603,6 +603,8 @@ class Editor
 		
 		// restart the game
 		_game.loadLevel(this.level);
+		
+		document.getElementById("canvas-transition").style.display = "none";
 	}
 	
 	play()
@@ -616,6 +618,8 @@ class Editor
 		this.controls["tool_shape"].object.disabled = true;
 */
 		this.setShapeWindowVisibility(false);
+		
+		document.getElementById("canvas-transition").style.display = "block";
 		
 		_game.paused = false;
 	}

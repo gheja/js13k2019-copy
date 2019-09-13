@@ -141,6 +141,41 @@ class Gfx
 		this.ctx.restore();
 	}
 	
+	drawTransition(progress)
+	{
+		let x, y, n, m, x1, y1;
+		
+		this.clearCtx(_transitionCtx);
+		_transitionCtx.fillStyle = "#222";
+		_transitionCtx.beginPath();
+		
+		for (y=0; y<_canvasWidth / 50; y++)
+		{
+			for (x=0; x<_canvasHeight / 50; x++)
+			{
+				m = 1 - x / (_canvasWidth / 50);
+				
+				if (progress < 0.5)
+				{
+					n = progress * 3 + (m - 1);
+				}
+				else
+				{
+					n = 2 - (progress - 0.5) * 3 + (m * -1);
+				}
+				
+				n = Math.min(Math.max(n, 0), 1) * 32;
+				
+				x1 = x * 50 - 50;
+				y1 = y * 50 + (x % 2) * 25 - 50;
+				
+				_transitionCtx.moveTo(x1, y1);
+				_transitionCtx.arc(x1, y1, n, 0, Math.PI * 2);
+			}
+		}
+		_transitionCtx.fill();
+	}
+	
 	drawWallBlocks()
 	{
 		let _size;
