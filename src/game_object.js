@@ -32,6 +32,7 @@ class GameObject
 		this.tickRound = 2;
 		this.drawRound = 2;
 		this.destroyed = false;
+		this.dashTicksLeft = 0;
 		
 		this.collidedObjects = [ null, null, null, null ]; // top, right, bottom, left
 	}
@@ -149,9 +150,14 @@ class GameObject
 	{
 		this.ticks++;
 		
-		if (this.gravity)
+		if (this.gravity && !this.dashTicksLeft)
 		{
 			this.speedY += 10 / 60;
+		}
+		
+		if (this.dashTicksLeft > 0)
+		{
+			this.speedY = 0;
 		}
 		
 		this.moveAndCheckCollisions();

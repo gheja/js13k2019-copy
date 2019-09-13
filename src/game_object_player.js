@@ -68,6 +68,19 @@ class GameObjectPlayer extends GameObject
 			}
 		}
 		
+		// dash
+		if (c[CONTROL_ACTION_2][INPUT_KEY_STATE] && c[CONTROL_ACTION_2][INPUT_KEY_CHANGED])
+		{
+			// has ground contact and moving
+			if (this.collidedObjects[DIRECTION_DOWN] && this.speedX != 0)
+			{
+				this.dashTicksLeft = 10;
+				
+				// move a bit up so will not hit the next block
+				this.y -= 2;
+			}
+		}
+		
 		// deactivate room but onyl when recording, don't replay it
 		if (c[CONTROL_ACTION_3][INPUT_KEY_STATE] && c[CONTROL_ACTION_3][INPUT_KEY_CHANGED] && this.recording)
 		{
@@ -118,8 +131,27 @@ class GameObjectPlayer extends GameObject
 		
 		c = this.recordedControls[this.ticks];
 		
+		if (this.dashTicksLeft > 0)
+		{
+			if (this.speedX < 0)
+			{
+				this.speedX = -10;
+			}
+			else
+			{
+				this.speedX = 10;
+			}
+			
+			this.dashTicksLeft--;
+		}
+		
 		this.updateCollisions();
 		this.updateOverlap();
+		
+		if (this.dashing)
+		{
+			this.dashing = false;
+		}
 		
 		if (c && !this.killed)
 		{

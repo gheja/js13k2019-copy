@@ -37,10 +37,10 @@ Features
 - [ ] death (x)
 
 Abilities
-- [ ] jump
-- [ ] double jump
-- [ ] wall jump
-- [ ] dash
+- [x] jump
+- [x] double jump
+- [x] wall jump
+- [x] dash
 - [ ] box push (x)
 - [ ] throw a spear? (and jump on it?) (x)
 - [ ] catch/drop (x)
@@ -91,6 +91,7 @@ Misc
 - [ ] level progressing
 - [ ] gamepad support
 - [ ] touch support
+- [ ] better progressbar? above player?
 - [ ] travis integration (+)
 
 Notes
