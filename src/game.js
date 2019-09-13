@@ -19,6 +19,8 @@ class Game
 		this.paused = false;
 		this.hint = "";
 		this.lastHint = "";
+		
+		this.resizeNeeded = true;
 	}
 	
 	setHint(status, hintArrows, hintAction1, hintAction2)
@@ -122,6 +124,11 @@ class Game
 		{
 			this.deactivateRoom();
 		}
+	}
+	
+	handleResize()
+	{
+		this.resizeNeeded = true;
 	}
 	
 	drawRoomHighlights()
@@ -279,6 +286,12 @@ class Game
 	{
 		let a;
 		
+		if (this.resizeNeeded)
+		{
+			_gfx.resize();
+			this.resizeNeeded = false;
+		}
+		
 		_gfx.frameStart();
 		
 		for (a of this.objects)
@@ -321,6 +334,8 @@ class Game
 	
 	init()
 	{
+		bindEvent(window, "resize", this.handleResize.bind(this));
+		bindEvent(window, "oreintationchange", this.handleResize.bind(this));
 		_raf(this.frame.bind(this));
 	}
 }

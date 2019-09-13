@@ -14,8 +14,6 @@ class Gfx
 		this.canvas.width = _canvasWidth;
 		this.canvas.height = _canvasHeight;
 		
-		this.renderSvgs();
-		
 		// --- wall init
 		let tmp;
 		
@@ -33,6 +31,25 @@ class Gfx
 		tmp.width = _canvasWidth;
 		tmp.height = _canvasHeight;
 		_transitionCtx = tmp.getContext("2d");
+	}
+	
+	resize()
+	{
+		_zoom = Math.min(window.innerWidth / 600, window.innerHeight / 600);
+		
+		_zoom = Math.floor(_zoom * 5) / 5;
+		
+		_canvasWidth = window.innerWidth;
+		_canvasHeight = window.innerHeight;
+		
+		_canvasWidth = 600 * _zoom;
+		_canvasHeight = 600 * _zoom;
+		
+		_padX = Math.floor((window.innerWidth - _canvasWidth) / 2);
+		_padY = Math.floor((window.innerHeight - _canvasHeight) / 2);
+		
+		this.renderSvgs();
+		this.drawWallBlocks();
 	}
 	
 	clearCtx(ctx)
@@ -99,6 +116,8 @@ class Gfx
 	renderSvgs()
 	{
 		let a, b;
+		
+		this.svgImages.length = 0;
 		
 		// render all SVGs to an Image for faster use
 		for (a of _svgs)
