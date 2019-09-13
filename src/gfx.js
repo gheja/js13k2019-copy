@@ -2,51 +2,47 @@
 
 class Gfx
 {
-	constructor(canvasId)
+	constructor()
 	{
-		this.canvas = document.getElementById(canvasId);
+		this.canvas = document.getElementById("canvas-main");
+		this.canvasWallBack = document.getElementById("canvas-back");
+		this.canvasWallFront = document.getElementById("canvas-front");
+		this.canvasTransition = document.getElementById("canvas-transition");
+		
 		this.ctx = this.canvas.getContext("2d");
+		this.ctxWallBack = this.canvasWallBack.getContext("2d");
+		this.ctxWallFront = this.canvasWallFront.getContext("2d");
+		this.ctxTransition = this.canvasTransition.getContext("2d");
 		
 		// array to hold the rendered SVGs
 		this.svgImages = [];
 		this.wallHue = 1;
-		
-		this.canvas.width = _canvasWidth;
-		this.canvas.height = _canvasHeight;
-		
-		// --- wall init
-		let tmp;
-		
-		tmp = document.getElementById("canvas-back");
-		tmp.width = _canvasWidth;
-		tmp.height = _canvasHeight;
-		_wallBackCtx = tmp.getContext("2d");
-		
-		tmp = document.getElementById("canvas-front");
-		tmp.width = _canvasWidth;
-		tmp.height = _canvasHeight;
-		_wallFrontCtx = tmp.getContext("2d");
-		
-		tmp = document.getElementById("canvas-transition");
-		tmp.width = _canvasWidth;
-		tmp.height = _canvasHeight;
-		_transitionCtx = tmp.getContext("2d");
 	}
 	
 	resize()
 	{
 		_zoom = Math.min(window.innerWidth / 600, window.innerHeight / 600);
 		
+		// make sure it is multiple of .2 (rendered fine on Chrome)
 		_zoom = Math.floor(_zoom * 5) / 5;
 		
 		_canvasWidth = window.innerWidth;
 		_canvasHeight = window.innerHeight;
 		
-		_canvasWidth = 600 * _zoom;
-		_canvasHeight = 600 * _zoom;
+		_padX = Math.floor((window.innerWidth - 600 * _zoom) / 2);
+		_padY = Math.floor((window.innerHeight - 600 * _zoom) / 2);
 		
-		_padX = Math.floor((window.innerWidth - _canvasWidth) / 2);
-		_padY = Math.floor((window.innerHeight - _canvasHeight) / 2);
+		this.canvas.width = _canvasWidth;
+		this.canvas.height = _canvasHeight;
+		
+		this.canvasWallBack.width = _canvasWidth;
+		this.canvasWallBack.height = _canvasHeight;
+		
+		this.canvasWallFront.width = _canvasWidth;
+		this.canvasWallFront.height = _canvasHeight;
+		
+		this.canvasTransition.width = _canvasWidth;
+		this.canvasTransition.height = _canvasHeight;
 		
 		this.renderSvgs();
 		this.drawWallBlocks();
@@ -178,9 +174,9 @@ class Gfx
 		width = 600;
 		height = 600;
 		
-		this.clearCtx(_transitionCtx);
-		_transitionCtx.fillStyle = "#222";
-		_transitionCtx.beginPath();
+		this.clearCtx(_gfx.ctxTransition);
+		_gfx.ctxTransition.fillStyle = "#222";
+		_gfx.ctxTransition.beginPath();
 		
 		for (y=0; y<width / 50; y++)
 		{
@@ -202,11 +198,11 @@ class Gfx
 				x1 = x * 50 - 50;
 				y1 = y * 50 + (x % 2) * 25 - 50;
 				
-				_transitionCtx.moveTo(x1, y1);
-				_transitionCtx.arc(x1, y1, n, 0, Math.PI * 2);
+				_gfx.ctxTransition.moveTo(x1, y1);
+				_gfx.ctxTransition.arc(x1, y1, n, 0, Math.PI * 2);
 			}
 		}
-		_transitionCtx.fill();
+		_gfx.ctxTransition.fill();
 	}
 	
 	randomizeWallHue()
@@ -261,10 +257,10 @@ class Gfx
 			
 			// drawSide(1.0,  0.00, -0.5, 0.33, _size     + x, _size   + y, p1); // bottom
 			// drawSide(0.5, -0.33,  0.0, 1.00, _size/2   + x, _size/3 + y, p1); // left
-			drawSide(_wallFrontCtx, 1.0,  0.00,  0.0, 1.00, _size/2   + x, _size/3 + y, p1); // front
+			drawSide(_gfx.ctxWallFront, 1.0,  0.00,  0.0, 1.00, _size/2   + x, _size/3 + y, p1); // front
 			// drawSide(1.0,  0.00,  0.0, 1.00, _size     + x, 0   + y, p1); // back
-			drawSide(_wallBackCtx, 1.0,  0.00, -0.5, 0.33, _size     + x, 0   + y, p2); // top
-			drawSide(_wallBackCtx, 0.5, -0.33,  0.0, 1.00, _size*3/2 + x, _size/3 + y, p3); // right
+			drawSide(_gfx.ctxWallBack, 1.0,  0.00, -0.5, 0.33, _size     + x, 0   + y, p2); // top
+			drawSide(_gfx.ctxWallBack, 0.5, -0.33,  0.0, 1.00, _size*3/2 + x, _size/3 + y, p3); // right
 		}
 		
 		function drawBackground(ctx, x, y, width, height, p4)
@@ -294,8 +290,8 @@ class Gfx
 		}
 		
 		
-		this.clearCtx(_wallBackCtx);
-		this.clearCtx(_wallFrontCtx);
+		this.clearCtx(_gfx.ctxWallBack);
+		this.clearCtx(_gfx.ctxWallFront);
 		
 		// document.body.style.background = "#111";
 		
@@ -320,7 +316,7 @@ class Gfx
 		
 		b.sort(layerSort);
 		
-		drawBackground(_wallBackCtx, 0, 0, 10, 10, p4);
+		drawBackground(_gfx.ctxWallBack, 0, 0, 12, 10, p4);
 		
 		for (a of b)
 		{

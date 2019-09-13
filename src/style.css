@@ -16,8 +16,10 @@ canvas
 #hint
 {
 	position: fixed;
-	top: 530px;
-	left: 25px;
+	bottom: 1em;
+	left: 0;
+	right: 0;
+	text-align: center;
 	z-index: 1000;
 	color: #aaa;
 }

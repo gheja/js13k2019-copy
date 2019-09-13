@@ -17,7 +17,7 @@ function init()
 {
 	inputInit();
 	
-	_gfx = new Gfx("canvas1");
+	_gfx = new Gfx();
 	
 	_game = new Game();
 	_game.init();
