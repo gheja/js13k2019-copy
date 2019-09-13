@@ -88,7 +88,7 @@ Misc
 - [x] automatic build system (+)
 - [x] separate ticks from frame rate
 - [ ] BUG: fix firefox SVG rendering
-- [ ] level progressing
+- [x] level progressing
 - [ ] gamepad support
 - [ ] touch support
 - [ ] hints from the player object

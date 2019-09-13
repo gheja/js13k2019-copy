@@ -21,6 +21,8 @@ class Game
 		
 		this.resizeNeeded = true;
 		this.lastTickTime = null;
+		
+		this.levelIndex = 0;
 	}
 	
 	setHint(status, hintArrows, hintAction1, hintAction2, hintAction3)
@@ -233,19 +235,46 @@ class Game
 		}
 	}
 	
-	win()
+	goToNextLevel()
 	{
-		this.won = true;
+		this.levelIndex++;
 		
-		if (DEBUG)
+		this.loadLevel(_levels[this.levelIndex]);
+	}
+	
+	checkWin()
+	{
+		let a, tmp;
+		
+		tmp = true;
+		
+		for (a of this.objects)
 		{
-			document.body.style.background = "#262";
+			if (a instanceof GameObjectGoal && !a.destroyed)
+			{
+				tmp = false;
+				// break;
+			}
 		}
+		
+		this.won = tmp;
+		
+		if (!this.won)
+		{
+			return;
+		}
+		
+		this.goToNextLevel();
 	}
 	
 	tick()
 	{
 		let a, i;
+		
+		if (this.won)
+		{
+			return;
+		}
 		
 		this.ticks++;
 		
@@ -267,6 +296,8 @@ class Game
 				}
 			}
 		}
+		
+		this.checkWin();
 		
 		if (this.mode == GAME_MODE_ROOM_SELECT)
 		{
