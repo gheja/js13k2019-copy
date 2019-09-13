@@ -11,6 +11,8 @@ class GameObjectDoor extends GameObject
 			this.color = "#886";
 		}
 		
+		this.svgIndex = SVG_DOOR_CLOSED;
+		this.svgScale = 1.4;
 		this.collisionTarget = true;
 		this.activationGroup = activationGroup;
 		this.tickRound = 3;
@@ -24,11 +26,13 @@ class GameObjectDoor extends GameObject
 		
 		this.open = false;
 		this.color = "#886";
+		this.svgIndex = SVG_DOOR_CLOSED;
 		
 		if (_game.isActivationGroupActive(this.activationGroup))
 		{
 			this.open = true;
 			this.color = "#332";
+			this.svgIndex = SVG_DOOR_OPEN;
 			// break;
 		}
 		

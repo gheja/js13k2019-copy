@@ -10,6 +10,7 @@ class GameObjectSwitch extends GameObject
 		this.collisionTarget = false;
 		this.activationGroup = activationGroup;
 		
+		this.svgIndex = SVG_SWITCH_OFF;
 		this.sticky = sticky;
 		this.inverted = inverted;
 		
@@ -67,9 +68,11 @@ class GameObjectSwitch extends GameObject
 		}
 		
 		this.color = "#151";
+		this.svgIndex = SVG_SWITCH_OFF;
 		
 		if (this.active)
 		{
+			this.svgIndex = SVG_SWITCH_ON;
 			this.color = "#3c3";
 		}
 	}

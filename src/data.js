@@ -78,8 +78,23 @@ const _svgs = [
 '<path d="m40 77c-5-1-11 8-1 20" fill="none" stroke="#000"/>\
 <path d="m48 87c-2-0-8 3-0 5" stroke="#000"/>',
 
-// SVG_PLAYER_LEFT_LEGS_FLYING
+// SVG_PLAYER_LEFT_LEGS_FLYING = 7
 '<path d="m54 87c3 3 10 3 15 3" fill="none" stroke="#000"/>\
-<path d="m52 78c6 6 15 5 28 6" stroke="#000"/>'
+<path d="m52 78c6 6 15 5 28 6" stroke="#000"/>',
+
+// SVG_SWITCH_OFF
+'<path d="m5 63h55l33-20-57-0z" fill="#333" stroke="#333"/>\
+<path d="m10 57h49l29-18-51-0z" fill="#888" stroke="#888"/>',
+
+// SVG_SWITCH_ON
+'<path d="m5 63h55l33-20-57-0z" fill="#F83" stroke="#F83"/>\
+<path d="m10 57h49l29-18-51-0z" fill="#888" stroke="#888"/>',
+
+// SVG_DOOR_CLOSED
+'<path d="m36 33 0 63 30-20 0-63z" fill="#a40" stroke="#803300"/>',
+
+// SVG_DOOR_OPEN
+'<path d="m36 97 30-20z" fill="none" stroke="#666"/>\
+<path d="m31 13 0 63 35-0 0-63z" fill="#803300" stroke="#520"/>'
 
 ];
