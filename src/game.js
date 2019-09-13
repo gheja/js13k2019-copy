@@ -44,7 +44,6 @@ class Game
 	
 	setHint(status, hintArrows, hintAction1, hintAction2, hintAction3)
 	{
-		// this.hint = status + "<br/><b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2;
 		this.hint = status + "<br/><b>[Arrows/WASD/Space]</b> " + hintArrows + " &middot; <b>[1]</b> " + hintAction1 + " &middot; <b>[2]</b> " + hintAction2 + " &middot; <b>[3]</b> " + hintAction3;
 		
 		if (this.hint != this.lastHint)
