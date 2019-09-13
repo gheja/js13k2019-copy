@@ -706,9 +706,9 @@ class Editor
 	{
 		let obj;
 		
-		bindEvent(_wallFrontCtx.canvas, "mousemove", this.handleMouseMove.bind(this));
-		bindEvent(_wallFrontCtx.canvas, "mousedown", this.handleMouseDown.bind(this));
-		bindEvent(_wallFrontCtx.canvas, "mouseup", this.handleMouseUp.bind(this));
+		bindEvent(_gfx.canvasWallFront, "mousemove", this.handleMouseMove.bind(this));
+		bindEvent(_gfx.canvasWallFront, "mousedown", this.handleMouseDown.bind(this));
+		bindEvent(_gfx.canvasWallFront, "mouseup", this.handleMouseUp.bind(this));
 		
 /*
 		this.gui = new dat.gui.GUI();

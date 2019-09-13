@@ -13,6 +13,19 @@ let _wallFrontCtx;
 let _wallBackCtx;
 let _transitionCtx;
 
+function startEditor(obj)
+{
+	obj.parentNode.removeChild(obj);
+	
+	if (_editor)
+	{
+		return;
+	}
+	
+	_editor = new Editor();
+	_editor.init();
+}
+
 function init()
 {
 	inputInit();
@@ -22,7 +35,4 @@ function init()
 	_game = new Game();
 	_game.init();
 	_game.loadLevel(_levels[0])
-	
-	_editor = new Editor();
-	_editor.init();
 }
