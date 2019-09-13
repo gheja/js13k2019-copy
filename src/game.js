@@ -78,6 +78,7 @@ class Game
 		this.ticks = 0;
 		this.won = false;
 		
+		_gfx.randomizeWallHue();
 		_gfx.drawWallBlocks();
 	}
 	

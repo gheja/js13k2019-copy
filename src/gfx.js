@@ -9,6 +9,7 @@ class Gfx
 		
 		// array to hold the rendered SVGs
 		this.svgImages = [];
+		this.wallHue = 1;
 		
 		this.canvas.width = _canvasWidth;
 		this.canvas.height = _canvasHeight;
@@ -176,6 +177,11 @@ class Gfx
 		_transitionCtx.fill();
 	}
 	
+	randomizeWallHue()
+	{
+		this.wallHue = Math.random() * 360;
+	}
+	
 	drawWallBlocks()
 	{
 		let _size;
@@ -261,10 +267,12 @@ class Gfx
 		
 		// document.body.style.background = "#111";
 		
-		let p1 = createPattern(120, 80, 50, 0.2); // front
-		let p2 = createPattern(120, 80, 50, 0.0); // front
-		let p3 = createPattern(120, 80, 50, 0.4); // front
-		let p4 = createPattern(120, 80, 50, 0.7); // front
+		let n = this.wallHue;
+		
+		let p1 = createPattern(n, n + 20, 40, 0); // front
+		let p2 = createPattern(n, n + 20, 25, 0); // top
+		let p3 = createPattern(n, n + 20, 30, 0); // left
+		let p4 = createPattern(n, n + 20, 15, 0); // back
 		
 		let i, a, b;
 		
