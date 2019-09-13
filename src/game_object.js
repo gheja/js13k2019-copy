@@ -30,6 +30,7 @@ class GameObject
 		this.speedY = 0;
 		this.ticks = 0;
 		this.tickRound = 2;
+		this.drawRound = 2;
 		this.destroyed = false;
 		
 		this.collidedObjects = [ null, null, null, null ]; // top, right, bottom, left

@@ -284,7 +284,7 @@ class Game
 	
 	renderFrame()
 	{
-		let a;
+		let a, i;
 		
 		if (this.resizeNeeded)
 		{
@@ -296,9 +296,15 @@ class Game
 		
 		this.drawRoomHighlights();
 		
-		for (a of this.objects)
+		for (i=0; i<=3; i++)
 		{
-			a.draw();
+			for (a of this.objects)
+			{
+				if (a.drawRound == i)
+				{
+					a.draw();
+				}
+			}
 		}
 		
 		a = (this.ticks % this.level.times[0][0]) / this.level.times[0][0];

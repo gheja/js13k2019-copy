@@ -14,6 +14,7 @@ class GameObjectPlayer extends GameObject
 		this.doubleJumped = false;
 		this.recording = false;
 		this.tickRound = 1;
+		this.drawRound = 3;
 		
 		this.recordedControls = [];
 	}
