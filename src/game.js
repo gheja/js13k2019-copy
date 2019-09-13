@@ -106,6 +106,16 @@ class Game
 		
 		_gfx.randomizeWallHue();
 		_gfx.drawWallBlocks();
+		
+		// if only one room exists always play that
+		if (this.level.times.length == 1)
+		{
+			this.activeRoomIndex = 0;
+			this.highlightedRoomIndex = 0;
+			// room will be selected on reset
+			this.mode = GAME_MODE_ROOM_WAITING;
+		}
+		
 	}
 	
 	isActivationGroupActive(n)
@@ -246,7 +256,11 @@ class Game
 			}
 			else if (this.mode == GAME_MODE_ROOM_PLAYING)
 			{
-				this.deactivateRoom();
+				// deselect only when more than one room exist
+				if (this.level.times.length != 1)
+				{
+					this.deactivateRoom();
+				}
 			}
 		}
 		
