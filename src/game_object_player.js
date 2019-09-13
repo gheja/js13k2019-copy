@@ -81,7 +81,8 @@ class GameObjectPlayer extends GameObject
 			}
 		}
 		
-		// deactivate room but onyl when recording, don't replay it
+		// deactivate room but only when recording, don't replay it
+		// TODO: this is not reached when dead, cannot finish early a failed attempt
 		if (c[CONTROL_ACTION_3][INPUT_KEY_STATE] && c[CONTROL_ACTION_3][INPUT_KEY_CHANGED] && this.recording)
 		{
 			this.stopRecording();
