@@ -178,17 +178,31 @@ class Game
 					}
 					else
 					{
-						color = "255,255,0";
+						if (this.ticks % 40 < 20)
+						{
+							color = "255,255,0";
+						}
+						else
+						{
+							color = "200,200,0";
+						}
 					}
 				}
 				else if (this.level.roomMap[y * this.level.width + x] == this.highlightedRoomIndex)
 				{
-					color = "255,255,255";
+					if (this.ticks % 40 < 20)
+					{
+						color = "255,255,255";
+					}
+					else
+					{
+						color = "200,200,200";
+					}
 				}
 				
 				if (color)
 				{
-					_gfx.drawDebugRectangle(x * GAME_OBJECT_COORDINATE_SCALE, y * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, "rgba(" + color + ",0.15)");
+					_gfx.drawDebugRectangle(x * GAME_OBJECT_COORDINATE_SCALE, y * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, 1 * GAME_OBJECT_COORDINATE_SCALE, "rgba(" + color + ",0.3)");
 				}
 			}
 		}
