@@ -50,7 +50,7 @@ Abilities
 Misc
 - [x] input handler (1)
 - [x] input sequence record/replay (1)
-- [ ] fix object render order
+- [x] fix object render order
 - [ ] gamepad support
 - [ ] touch support
 - [x] screen position, zoom, etc.
