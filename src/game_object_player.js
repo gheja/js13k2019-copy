@@ -22,7 +22,7 @@ class GameObjectPlayer extends GameObject
 	
 	handleControls(c)
 	{
-		if (c[CONTROL_UP][INPUT_KEY_STATE] && c[CONTROL_UP][INPUT_KEY_CHANGED])
+		if (c[CONTROL_UP][INPUT_KEY_STATE] && c[CONTROL_UP][INPUT_KEY_CHANGED] || c[CONTROL_ACTION_1][INPUT_KEY_STATE] && c[CONTROL_ACTION_1][INPUT_KEY_CHANGED])
 		{
 			// has ground contact - normal jump
 			if (this.collidedObjects[DIRECTION_DOWN])

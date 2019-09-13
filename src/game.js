@@ -279,7 +279,7 @@ class Game
 		}
 		else
 		{
-			this.setHint("Play this room", "Walk/jump", "(none)", "Dash", "Finished");
+			this.setHint("Play this room", "Walk/jump", "Jump", "Dash", "Finished");
 		}
 		
 		inputAcknowledge();
