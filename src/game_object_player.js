@@ -78,6 +78,13 @@ class GameObjectPlayer extends GameObject
 	
 	draw()
 	{
+		if (this.killed)
+		{
+			_gfx.drawSvg(SVG_PLAYER_FRONT_BODY_DEAD, this.x, this.y);
+			_gfx.drawSvg(SVG_PLAYER_LEFT_LEGS_RUN1, this.x, this.y);
+			return;
+		}
+		
 		if (Math.round(this.speedX, 2) == 0)
 		{
 			_gfx.drawSvg(SVG_PLAYER_FRONT_BODY, this.x, this.y);

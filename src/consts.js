@@ -6,6 +6,7 @@ const OBJ_STARTPOINT = 0;
 const OBJ_DOOR = 1;
 const OBJ_SWITCH = 2;
 const OBJ_GOAL = 3;
+const OBJ_SPIKE = 4;
 // const OBJ_WALL = n + 1;
 
 const GAME_OBJECT_COORDINATE_SCALE = 50;
@@ -45,3 +46,7 @@ const SVG_SWITCH_OFF = 8;
 const SVG_SWITCH_ON = 9;
 const SVG_DOOR_CLOSED = 10;
 const SVG_DOOR_OPEN = 11;
+const SVG_SPIKE_FLOOR = 12;
+const SVG_SPIKE_LEFT = 13;
+const SVG_SPIKE_TOP = 14;
+const SVG_PLAYER_FRONT_BODY_DEAD = 15;

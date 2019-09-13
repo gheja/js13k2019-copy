@@ -32,7 +32,8 @@ class Editor
 			[ "x", "y" ], // OBJ_STARTPOINT == 0
 			[ "x", "y", "activationGroup" ], // OBJ_DOOR == 1
 			[ "x", "y", "activationGroup", "sticky", "inverted" ], // OBJ_SWITCH == 2
-			[ "x", "y" ] // OBJ_GOAL == 3
+			[ "x", "y" ], // OBJ_GOAL == 3
+			[ "x", "y", "direction" ] // OBJ_SPIKE == 4
 		];
 		
 		this.cursorX = 0;
@@ -729,6 +730,7 @@ class Editor
 		this.controlsAddButton("obj_2", "+Door", this.handleButtonNewObject.bind(this, OBJ_DOOR, 0, 0, 1));
 		this.controlsAddButton("obj_3", "+Switch", this.handleButtonNewObject.bind(this, OBJ_SWITCH, 0, 0, 1, 0, 0));
 		this.controlsAddButton("obj_4", "+Goal", this.handleButtonNewObject.bind(this, OBJ_GOAL, 0, 0));
+		this.controlsAddButton("obj_5", "+Spike", this.handleButtonNewObject.bind(this, OBJ_SPIKE, 0, 0, 1));
 		this.controlsAddButton("obj_delete", "del", this.handleButtonDelObject.bind(this));
 		this.controlsAddSeparator();
 		

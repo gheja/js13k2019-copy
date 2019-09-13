@@ -44,7 +44,8 @@ class Game
 			GameObjectPlayer, // OBJ_STARTPOINT == 0
 			GameObjectDoor, // OBJ_DOOR == 1
 			GameObjectSwitch, // OBJ_SWITCH == 2
-			GameObjectGoal // OBJ_GOAL == 3
+			GameObjectGoal, // OBJ_GOAL == 3
+			GameObjectSpike // OBJ_SPIKE == 4
 		];
 		
 		this.level = data;

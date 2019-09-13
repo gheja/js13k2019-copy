@@ -95,6 +95,26 @@ const _svgs = [
 
 // SVG_DOOR_OPEN
 '<path d="m36 97 30-20z" fill="none" stroke="#00000066"/>\
-<path d="m31 13 0 63 35-0 0-63z" fill="#803300" stroke="#520"/>'
+<path d="m31 13 0 63 35-0 0-63z" fill="#803300" stroke="#520"/>',
+
+// SVG_SPIKE_FLOOR
+'<path d="m21 93 9-7 7 7 7-12 5 14 8-9 6 8 3-14 9 13" fill="none" stroke="#ffe680"/>',
+
+// SVG_SPIKE_LEFT
+'<path d="m10 21 13 9-12 9 16 4-14 9 14 3-12 11 11 4-14 11" fill="none" stroke="#ffe680"/>',
+
+// SVG_SPIKE_TOP
+'<path d="m23 12 10 19 5-17 8 17 3-17 6 17 7-19 1 13 6-13" fill="none" stroke="#ffe680"/>',
+
+// SVG_PLAYER_FRONT_BODY_DEAD
+'<path d="m31 10c2-8 59-0 55 20-3 20-6 53-18 59-11 5-38-1-51-11-12-9 11-59 14-68z" fill="#f0e0d1" stroke="#917c6f"/>\
+<path d="m35 17c16 16 42 11 46 12" fill="none" stroke="#917c6f"/>\
+<path d="m21 42c-4 11 6 15 2 28" fill="none" stroke="#000"/>\
+<path d="m76 54c5 2-2 16 5 28" fill="none" stroke="#000"/>\
+<path transform="matrix(.5 .15879 -.15879 .59407 28 28)" d="m39 31a3 3 0 1 1 -6 0 3 3 0 1 1 6 0z" fill="#483e37" stroke="#483e37"/>\
+<path d="m60 38c3 3 4 6 6 10" fill="none" stroke="#483e37"/>\
+<path d="m58 46c5-2 7-2 12-3" fill="none" stroke="#483e37"/>\
+<path d="m35 32c3 3 4 6 6 10" fill="none" stroke="#483e37"/>\
+<path d="m33 39c5-2 5-3 12-3" fill="none" stroke="#483e37"/>'
 
 ];
