@@ -27,8 +27,8 @@ let _levels = [
 1111111111\
 1111111111",
 		"times": [
-			[ 300, 1 ], // [ length, offset ]
-			[ 300, 1 ]
+			[ 300, 1, 7, 1 ], // [ length, offset, clock x, clock y ]
+			[ 300, 1, 7, 5 ]
 		],
 		"objects": [
 			[ OBJ_STARTPOINT, 8, 2 ], // [ type, x, y, (optional parameters) ]

@@ -287,7 +287,7 @@ class Game
 	
 	renderFrame()
 	{
-		let a, i;
+		let a, i, b;
 		
 		if (this.resizeNeeded)
 		{
@@ -310,11 +310,11 @@ class Game
 			}
 		}
 		
-		a = (this.ticks % this.level.times[0][0]) / this.level.times[0][0];
-		_gfx.drawDebugProgressBar(390, 80, 80, 5, a, "#ccc");
-		
-		a = (this.ticks % this.level.times[1][0]) / this.level.times[1][0];
-		_gfx.drawDebugProgressBar(390, 280, 80, 5, a, "#ccc");
+		for (a of this.level.times)
+		{
+			b = (this.ticks % a[0]) / a[0];
+			_gfx.drawDebugProgressBar(a[2] * GAME_OBJECT_COORDINATE_SCALE, a[3] * GAME_OBJECT_COORDINATE_SCALE, 50, 8, b, "#ccc");
+		}
 		
 		if (DEBUG && _editor && this.paused)
 		{
