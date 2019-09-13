@@ -76,7 +76,7 @@ class GameObjectPlayer extends GameObject
 			{
 				this.dashTicksLeft = 10;
 				
-				// move a bit up so will not hit the next block
+				// move a bit up so will not hit the next block and "fly" animation plays
 				this.y -= 2;
 			}
 		}

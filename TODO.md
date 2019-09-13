@@ -30,6 +30,7 @@ Features
 - [x] gravity (1)
 - [x] switch emitter (1)
 - [x] switch receiver (1)
+- [ ] hints from the player object
 - [ ] collision between object and object (x)
 - [ ] stick to object (x)
 - [ ] player pushing object (x)
